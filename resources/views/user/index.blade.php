@@ -1,30 +1,12 @@
 <!DOCTYPE html>
 <title>USER SETTING</title>
 
-<html>
-  <!-- Bootstrap CSS -->
-  <link href="/NiceAdmin/css/bootstrap.min.css" rel="stylesheet">
-  <!-- bootstrap theme -->
-  <link href="/NiceAdmin/css/bootstrap-theme.css" rel="stylesheet">
-  <!--external css-->
-  <!-- font icon -->
-  <link href="/NiceAdmin/css/elegant-icons-style.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/font-awesome.min.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/daterangepicker.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/bootstrap-datepicker.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/bootstrap-colorpicker.css" rel="stylesheet" />
-  <!-- date picker -->
-
-  <!-- color picker -->
-
-  <!-- Custom styles -->
-  <link href="/NiceAdmin/css/style.css" rel="stylesheet">
-  <link href="/NiceAdmin/css/style-responsive.css" rel="stylesheet" />
-@include('partials/header')
-@include('partials/sidebar')
-<body>
-      <section id="main-content">
-      <section class="wrapper" >
+<body class="hold-transition skin-blue sidebar-mini">
+      <section class="wrapper">
+        @include('partials/header2')
+          @include('partials.sidebar')
+  <div class="content-wrapper">
+    <section class="content">
            @if (count($errors) > 0)
       <div class="alert alert-danger">
         <ul>
@@ -37,13 +19,11 @@
     <div class="row">
           <div class="col-lg-12">
             <section class="panel">
-              <header class="panel-heading">
+              <header class="panel-heading bg-primary">
                 User Setting
               </header>
               <br>
                       @if(checkPermission(['superadmin','admin']))
-             <div class="panel-heading" style="margin-left:10px; margin-right: 10px; ">Tambah
-                             </div>
                 <div class="panel-body" style="margin-left:10px; margin-right: 10px; ">
                <form action="{{ URL('user/store') }}" method="post" class="form" align="left"> 
               {{ csrf_field() }}      
@@ -54,6 +34,9 @@
 <span class="input-group-addon" onclick="open_child('/pem_tender/lookup/lookup_karyawan','Look Up','800','500'); return false;">
 <i class="fa fa-user"></i></span>
 </div>
+                        <input type="hidden" class="form-control" autocomplete="off" readonly  id="kode" readonly>
+                        <input type="hidden" class="form-control" autocomplete="off" readonly  id="jabatan" readonly>
+                        <input type="hidden" class="form-control" autocomplete="off" readonly  id="divisi" readonly>
                      <label for="exampleInputEmail1">EMAIL :</label>
                     <input type="email" class="form-control" name="email" readonly autocomplete="off" id="email" placeholder="">
                     <label for="exampleInputEmail1">ROLE :</label>

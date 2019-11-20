@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <title>REVIEW PENJUALAN (TENDER)</title>
-@include('partials/header2')
-  <!-- Left side column. contains the logo and sidebar --> 
-  <!-- Content Wrapper. Contains page content -->
-<body>
+<body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
       <section class="wrapper" style="background-color: white;">
+                @include('partials/header2')
+          @include('partials.sidebar')
+       <div class="content-wrapper">
+    <section class="content" style="background-color: white;">
                        @if(checkPermission(['admin','superadmin']))
-        <a href="/pem_tender" style="color: blue;" title="Klik Untuk Melihat Detail">
-      <button class="btn-sm btn-success"><i class="fa fa-arrow-left"></i> Back To List</button></a>
+  <div class="box-body" style="text-align: left;">
+      <a href="/pem_tender" class="btn btn-app">
+                <i class="fa fa-arrow-circle-left" title="BACK" style="font-size: 32px;"></i> </a>
+           </div>
                       @endif
-                      <br><br>
       @include('alert.flash-message')
       @php ($date_now = date('Y-m-d'))
       @php(
@@ -110,74 +112,102 @@
         @else
         @php ($harga_penawaran = (number_format($data->harga_penawaran,0,",",".").""))
         @endif
-<header class="bg-primary" style="color: white; padding-left: 5px; padding: 5px;">
+<header class="bg-primary detail" >
 <strong>REVIEW PENJUALAN (TENDER) {{ $data->kd_pn_tender }}</strong></header>
-        <div class="panel-body" style="margin-left:10px; margin-right: 10px; ">
-          <div class="col-xs-6" style="font-size: 12px;">
-            <address>           
-              <div ><strong><u>GRUP JASA</u></strong></div>
-             <div style="color: blue; margin-left: 10px; font-size: 14px;">
-              <p style="font-family: Helvetica;">{{$data->kelompok_jasa}}</p></div>
-             <div><strong><u>SUB JASA</u></strong></div>
-             <div style="color: blue; margin-left: 10px; font-size: 14px;">
-              <p style="font-family: Helvetica;">{{$data->sub_jasa}}</p></div>
-             <div> <strong><u>NAMA PEKERJAAN</u></strong></div>
-             <div style="color: blue; margin-left: 10px; font-size: 14px;">
-              <p style="font-family: Helvetica;">{{$data->nama_pekerjaan}}</p></div>
-             <div> <strong><u>BIDANG / SUB BIDANG PEKERJAAN</u> </strong></div>
-             <div style="color: blue; margin-left: 10px; font-size: 14px;">
-              <p style="font-family: Helvetica;">{{$data->sub_pekerjaan}}</p></div>
-            </address>
+<div class="info-box " style="width: 90%;">
+<span class="info-box-icon" style="background-color: white;"><i class="fa fa-building"></i></span>
+
+            <div class="info-box-content">
+           <span class="info-box-text">NAMA KLIEN</span>
+              <span class="info-box-number">{{$data->nama_klien}}</span>
+                <div class="progress">
+                <div class="progress-bar"></div>
+              </div>
+                             <span class="info-box-text">ALAMAT</span>
+              <span class="info-box-number">{{ $data->alamat }}</span>
+              <div class="progress">
+                <div class="progress-bar"></div>
+              </div>
+                             <span class="info-box-text">TELP</span>
+              <span class="info-box-number">{{ $data->telp_fax }}</span>
             </div>
+            <!-- /.info-box-content -->
+          </div>
+            <div class="panel-body" style="margin-left:10px; margin-right: 10px; ">
+
+      <div class="col-md-3">
+                  <!-- /.info-box -->
+          <div class="info-box bg-aqua">
+            <span class="info-box-icon"><i class="fa fa-location-arrow"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text"><strong>LOKASI PEKERJAAN :</strong></span>
+              <span class="info-box-number" style="font-size: 12px;"> {{ $data->lokasi_pekerjaan }}</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <div class="info-box bg-aqua">
+            <span class="info-box-icon"><i class="fa fa-handshake-o"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text"><strong>GRUP JASA :</strong></span>
+              <span class="info-box-number" style="font-size: 12px;">{{$data->kelompok_jasa}}</span>
+              <hr>
+               <span class="info-box-text"><strong>SUB JASA :</strong></span>
+              <span class="info-box-number" style="font-size: 12px;">{{$data->sub_jasa}}</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+        </div>
+          <div class="col-md-3">
+                  <!-- /.info-box -->
+          <div class="info-box bg-aqua">
+            <span class="info-box-icon"><i class="fa fa-tasks"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text"><strong>NAMA PEKERJAAN :</strong> </span>
+              <span class="info-box-number" style="font-size: 12px;">{{$data->nama_pekerjaan}}</span>
+              <hr>
+                            <span class="info-box-text"><strong>SUB PEKERJAAN :</strong></span>
+                                          <span class="info-box-number" style="font-size: 12px;">{{$data->sub_pekerjaan}}</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+                   <div class="info-box bg-aqua">
+            <span class="info-box-icon"><i class="fa fa-exchange"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text"><strong>RINGKASAN RUANG LINGKUP</strong></span>
+              <hr>
+              <span class="info-box-number" style="font-size: 12px;">{{$data->ringkasan_lingkup}}</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+        </div>
+        <div class="col-md-3">
+                  <!-- /.info-box -->
+          <div class="info-box bg-blue">
+            <span class="info-box-icon"><i class="fa fa-users"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text"><strong>STATUS :</strong> </span>
+              <span class="info-box-number" style="font-size: 12px;">{{$data->status}}</span>
+                            <span class="info-box-text"><strong>CP SPRINT :</strong></span>
+                                          <span class="info-box-number" style="font-size: 12px;">{{$data->cp_internal}}<br>{{$data->cp_internal_email}}</span>
+                                          <hr>
+                            <span class="info-box-text"><strong>CONTACT PERSON :</strong></span>
+                                          <span class="info-box-number" style="font-size: 12px;"><br>{{$data->cp_ops_nama1}}<br>{{$data->cp_ops_telp1}}<br>{{$data->cp_ops_email1}}</span>
+                                          <hr>
+                                          <span class="info-box-text"><strong>SUMBER INFORMASI :</strong></span>
+                                          <span class="info-box-number" style="font-size: 12px;">{{$data->informasi_nama}}<br>{{$data->informasi_telp}}<br>{{$data->informasi_email}}</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+        </div>
             <div  style="font-size: 12px;" class="col-xs-6 text-right">
-            <address>
-              <div style="color: blue; font-size: 14px;"><text style="background-color: blue; color: white; padding: 5px;">{{$data->status_tender}}</div><br>
-              <div><strong><u>CP SPRINT</u></strong></div>
-              <div style="color: blue; margin-right: 10px; font-size: 14px;">
-                <p style="font-family: Helvetica;">{{$data->cp_internal}}</p></div>
-              <div><strong><u>CP EMAIL</u></strong></div>
-              <div style="color: blue; margin-right: 10px; font-size: 14px;">
-                <p style="font-family: Helvetica;">{{$data->cp_internal_email}}</p></div>
-              </address>
           </div>
         </div>
         <div class="row" style="margin-left:10px; margin-right: 10px;">
-          <div class="col-lg-6" style="font-size: 12px;">
-            <div class="panel panel-info">
-           <div class="panel-heading" style="margin-top: 5px;">KLIEN ({{ $data->kd_klien }})</div>
-              <div class="panel-content  " style="height: 250px; font-size:14px; background-color: #eee ">
-              <i class="fa fa-building-o"></i><text style="color:  #eee">__</text><strong>{{$data->nama_klien}}</strong><br>
-              <i class="fa fa-phone"></i><text style="color:  #eee">__</text><strong>{{$data->telp_fax}}</strong><br>
-              <i class="fa fa-envelope"></i><text style="color:  #eee">__</text><strong>{{$data->email}}</strong><br>
-              <i class="fa fa-globe"></i><text style="color:  #eee">__</text><strong>{{$data->website}}</strong><br>
-              <br>
-              <strong><u>Alamat</u></strong><br>{{$data->alamat}}
-            </div>
-          </div>
         </div>
-        <div class="col-lg-3" style="font-size: 12px;">
-            <div class="panel panel-info">
-           <div class="panel-heading" style="margin-top: 5px;">CONTACT PERSON</div>
-               <div class="panel-content  " style="height: 250px; background-color: #eee ">
-                   <div><strong><u>NAMA</u></strong></div><div><i>{{$data->cp_ops_nama1}}</i></div><br>
-                  <div><strong><u>TELP</u></strong></div><div><i>{{$data->cp_ops_telp1}}</i></div><br>
-                  <div><strong><u>EMAIL</u></strong></div><div><i>{{$data->cp_ops_email1}}</i></div><br>
-            </div>
-          </div>
-          </div>
-          <div class="col-lg-3" style="font-size: 12px; " >
-          <div class="panel panel-info">
-          <div class="panel-heading" style="margin-top: 5px;">SUMBER INFORMASI</div>
-          <div class="panel-content " style="height: 250px; background-color: #eee ">
-                  <div><strong><u>NAMA</u></strong></div><div><i>{{$data->informasi_nama}}</i></div><br>
-                  <div><strong><u>ENTITAS</u></strong></div><div><i>{{$data->informasi_entitas}}</i></div><br>
-                  <div><strong><u>TELP</u></strong></div><div><i>{{$data->informasi_telp}}</i></div><br>
-                  <div><strong><u>EMAIL</u></strong></div><div><i>{{$data->informasi_email}}</i></div><br>
-          </div>
-          </div>
-          </div>
-        </div>
-        <header class="bg-primary" style="color: white; padding-left: 5px; padding: 5px;">
+        <header class="bg-primary detail">
 <strong>ALUR PENJUALAN (TENDER) {{ $data->kd_pn_tender }}</strong></header>
 <br>
         <div>
@@ -185,8 +215,8 @@
         </div>
           <div class="col-lg-2" style="font-size: 12px;">
           <div class="panel panel-info">
-          <div class="panel-heading" style="margin-top: 5px; background-color: #  ; color: black;">CANVASSING</div>
-               <div class="panel-content bg-success" style="height: 200px; background-color: # ">
+          <div class=" detail-header bg-primary " style="margin-top: 5px; ">CANVASSING</div>
+               <div class="detail-body panel-content bg-success" style="height: 200px; background-color: # ">
                    <div><strong><u>Tanggal</u></strong></div><div>{{$tgl_canvasing}}</div><br>
                    <div><a href="#hasil1" data-toggle="modal"><small style="color : blue;">Lihat Hasil</small></a></div>
         </div>
@@ -210,8 +240,8 @@
         </div>
           <div class="col-lg-2" style="font-size: 12px;">
             <div class="panel panel-info bg-success">
-           <div class="panel-heading" style="margin-top: 5px; background-color: #  ; color: black;">PROSES KAK & RAB</div>
-               <div class="panel-content bg-success" style="height: 200px; background-color: # ">
+           <div class=" detail-header bg-primary " style="margin-top: 5px; ">PROSES KAK & RAB</div>
+               <div class="detail-body panel-content bg-success" style="height: 200px; background-color: # ">
                    <div><strong><u>Tanggal</u></strong></div><div>{{$tgl_kak}}</div><br>
                    <div><strong><u>Nilai</u></strong></div><div>{{$nilai_kak}}</div>
             </div>
@@ -222,8 +252,8 @@
         </div>
           <div class="col-lg-2" style="font-size: 12px;">
             <div class="panel panel-info">
-     <div class="panel-heading" style="margin-top: 5px; background-color: #  ; color: black;">PROSES PENDAFTARAN</div>
-               <div class="panel-content bg-success" style="height: 200px; background-color: # " >
+     <div class=" detail-header bg-primary " style="margin-top: 5px; ">PROSES PENDAFTARAN</div>
+               <div class="detail-body panel-content bg-success" style="height: 200px; background-color: # " >
                    <div><strong><u>Tanggal</u></strong></div><div>{{$tgl_pendaftaran}}</div><br>
                    <div><a href="#hasil2" data-toggle="modal"><small style="color : blue;">Lihat Hasil</small></a></div>
             </div>
@@ -234,8 +264,8 @@
         </div>
       <div class="col-lg-2" style="font-size: 12px;">
             <div class="panel panel-info" >
-          <div class="panel-heading" style="margin-top: 5px; background-color: #  ; color: black;">HARGA PENAWARAN</div>
-               <div class="panel-content bg-success" style="height: 200px; background-color: # ">                                  
+          <div class=" detail-header bg-primary " style="margin-top: 5px; ">HARGA PENAWARAN</div>
+               <div class="detail-body panel-content bg-success" style="height: 200px; background-color: # ">                                  
             <div><strong><u>Nilai</u></strong></div><div>{{$harga_penawaran}}</div><br>
             </div>
           </div>
@@ -258,9 +288,9 @@
         </div>
           <div class="col-lg-4" style="font-size: 12px;">
             <div class="panel panel-info">
-         <div class="panel-heading" style="margin-top: 5px; background-color: #  ; color: black;">
+         <div class=" detail-header bg-primary " style="margin-top: 5px; ">
          PROSES PRAKUALIFIKASI (PQ)</div>
-               <div class="panel-content bg-success" style="height: 200px; background-color: # ">
+               <div class="detail-body panel-content bg-success" style="height: 200px; background-color: # ">
                   <div><strong><u>Tanggal Ambil</u> </strong></div><div>{{$tgl_ambil}}</div><br>
                 <div><strong><u>Tanggal Submit</u> </strong></div><div>{{$tgl_submit}}</div><br>
             <div><strong><u>Tanggal Pembuktian</u> </strong></div><div>{{$tgl_pembuktian}}</div><br>
@@ -286,8 +316,8 @@
         </div>
           <div class="col-lg-2" style="font-size: 12px; ">
             <div class="panel panel-info">
-        <div class="panel-heading" style="margin-top: 5px; background-color: #  ; color: black;">PROSES AANWIJZING</div>
-               <div class="panel-content bg-success" style="height: 150px; background-color: # ">
+        <div class=" detail-header bg-primary " style="margin-top: 5px; ">PROSES AANWIJZING</div>
+               <div class="detail-body panel-content bg-success" style="height: 150px; background-color: # ">
                 <div><strong><u>Tanggal</u> </strong></div><div>{{$tgl_aanwijzing}}</div><br>
                    <div><strong><u>Personil</u></strong></div><div>{{$data->personil_aanwijzing}}</div>
             </div>
@@ -298,8 +328,8 @@
         </div>
          <div class="col-lg-2" style="font-size: 12px;">
             <div class="panel panel-info">
-    <div class="panel-heading" style="margin-top: 5px; background-color: #  ; color: black;">PEMBUKAAN SAMPUL I</div>
-               <div class="panel-content bg-success" style="height: 150px; background-color: # ">
+    <div class=" detail-header bg-primary " style="margin-top: 5px; ">PEMBUKAAN SAMPUL I</div>
+               <div class="detail-body panel-content bg-success" style="height: 150px; background-color: # ">
                          <div><strong><u>Tanggal</u></strong></div><div>{{$tgl_sampul1}}</div><br>
             <div><a href="#hasil4" data-toggle="modal"><small style="color : blue;">Lihat Hasil</small></a></div>
             </div>
@@ -323,8 +353,8 @@
                 </div>
           <div class="col-lg-2" style="font-size: 12px;">
             <div class="panel panel-info">
-       <div class="panel-heading" style="margin-top: 5px; background-color: #  ; color: black;">BEAUTY CONTEST</div>
-               <div class="panel-content bg-success" style="height: 150px; background-color: # ">
+       <div class=" detail-header bg-primary " style="margin-top: 5px; ">BEAUTY CONTEST</div>
+               <div class="detail-body panel-content bg-success" style="height: 150px; background-color: # ">
                <div><strong><u>Tanggal</u></strong></div><div>{{$tgl_contest}}</div><br>
                    <div><strong><u>Personil</u></strong></div><div>{{$data->personil_contest}}</div>
             </div>
@@ -335,8 +365,8 @@
         </div>
        <div class="col-lg-2" style="font-size: 12px;">
             <div class="panel panel-info">
-       <div class="panel-heading" style="margin-top: 5px; background-color: #  ; color: black;">KLARIFIKASI TEKNIS</div>
-               <div class="panel-content bg-success" style="height: 150px; background-color: # ">
+       <div class=" detail-header bg-primary " style="margin-top: 5px; ">KLARIFIKASI TEKNIS</div>
+               <div class="detail-body panel-content bg-success" style="height: 150px; background-color: # ">
                          <div><strong><u>Tanggal</u></strong></div><div>{{$tgl_klarifikasi_teknis}}</div><br>
                     <div><a href="#hasil5" data-toggle="modal"><small style="color : blue;">Lihat Hasil</small></a></div>
             </div>
@@ -360,8 +390,8 @@
                 </div>
                          <div class="col-lg-2" style="font-size: 12px;">
             <div class="panel panel-info">
-         <div class="panel-heading" style="margin-top: 5px; background-color: #  ; color: black;">EVALUASI TEKNIS</div>
-               <div class="panel-content bg-success" style="height: 150px; background-color: # ">
+         <div class=" detail-header bg-primary " style="margin-top: 5px; ">EVALUASI TEKNIS</div>
+               <div class="detail-body panel-content bg-success" style="height: 150px; background-color: # ">
                          <div><strong><u>Tanggal</u></strong></div><div>{{$tgl_evaluasi_teknis}}</div><br>
                <div><a href="#hasil6" data-toggle="modal"><small style="color : blue;">Lihat Hasil</small></a></div>
             </div>
@@ -385,8 +415,8 @@
                 </div>
       <div class="col-lg-2" style="font-size: 12px;">
             <div class="panel panel-info">
-   <div class="panel-heading" style="margin-top: 5px; background-color: #  ; color: black;">INFORMASI TENDER</div>
-               <div class="panel-content bg-success" style="height: 150px; background-color: # ">
+   <div class=" detail-header bg-primary " style="margin-top: 5px; ">INFORMASI TENDER</div>
+               <div class="detail-body panel-content bg-success" style="height: 150px; background-color: # ">
             <div><strong><u>Pengambilan</u></strong></div><div>{{$tgl_pengambilan_doc}}</div><br>
             <div><strong><u>Pemasukan</u> </strong></div><div>{{$tgl_pemasukan_doc}}</div>
             </div>
@@ -397,8 +427,8 @@
         </div>
       <div class="col-lg-2" style="font-size: 12px;">
             <div class="panel panel-info ">
-   <div class="panel-heading" style="margin-top: 5px; background-color: #  ; color: black;">PEMBUKAAN SAMPUL II</div>
-               <div class="panel-content bg-success" style="height: 150px; background-color: # ">
+   <div class=" detail-header bg-primary " style="margin-top: 5px; ">PEMBUKAAN SAMPUL II</div>
+               <div class="detail-body panel-content bg-success" style="height: 150px; background-color: # ">
             <div><strong><u>Tanggal</u></strong></div><div>{{$tgl_sampul2}}</div><br>
                <div><a href="#hasil7" data-toggle="modal"><small style="color : blue;">Lihat Hasil</small></a></div>
             </div>
@@ -422,8 +452,8 @@
                 </div>
              <div class="col-lg-2" style="font-size: 12px;">
             <div class="panel panel-info ">
-<div class="panel-heading" style="margin-top: 5px; background-color: #  ; color: black;">NEGOSIASI / KLARIFIKASI</div>
-        <div class="panel-content bg-success" style="height: 150px; background-color: # ">
+<div class=" detail-header bg-primary " style="margin-top: 5px; ">NEGOSIASI / KLARIFIKASI</div>
+        <div class="detail-body panel-content bg-success" style="height: 150px; background-color: # ">
             <div><strong><u>Tanggal</u></strong></div><div>{{$tgl_negosiasi}}</div><br>
             <div><a href="#hasil8" data-toggle="modal"><small style="color : blue;">Lihat Hasil</small></a></div>
             </div>
@@ -447,8 +477,8 @@
                 </div>
        <div class="col-lg-2" style="font-size: 12px;">
        <div class="panel panel-info">
-       <div class="panel-heading" style="margin-top: 5px; background-color: #  ; color: black;">HISTORY FOLLOW UP</div>
-          <div class="panel-content bg-success" style="height: 150px; background-color: # ">
+       <div class=" detail-header bg-primary " style="margin-top: 5px; ">HISTORY FOLLOW UP</div>
+          <div class="detail-body panel-content bg-success" style="height: 150px; background-color: # ">
             <div><strong><u>Tanggal</u></strong></div><div>{{$tgl_followup}}</div><br>
                     <div><a href="#status" data-toggle="modal"><small style="color : blue;">Lihat Status</small></a></div>
             </div>
@@ -472,8 +502,8 @@
         </div>
         <div class="col-lg-2" style="font-size: 12px;">
             <div class="panel panel-info">
-       <div class="panel-heading" style="margin-top: 5px; background-color: #  ; color: black;">PELUANG DAPAT (%)</div>
-               <div class="panel-content bg-success" style="height: 150px; background-color: # ">
+       <div class=" detail-header bg-primary " style="margin-top: 5px; ">PELUANG DAPAT (%)</div>
+               <div class="detail-body panel-content bg-success" style="height: 150px; background-color: # ">
       <h2 align="center"><strong>{{ $data->peluang }} %</strong></h2>
             </div>
           </div>
@@ -483,8 +513,8 @@
         </div>
         <div class="col-lg-2" style="font-size: 12px;">
           <div class="panel panel-info">
-   <div class="panel-heading" style="margin-top: 5px; background-color: #  ; color: black;">KOMPETITOR</div>
-          <div class="panel-content bg-success" style="height: 150px; background-color: # ">
+   <div class=" detail-header bg-primary " style="margin-top: 5px; ">KOMPETITOR</div>
+          <div class="detail-body panel-content bg-success" style="height: 150px; background-color: # ">
           <div>{{$data->kompetitor}}</div>
           </div>
           </div>
@@ -494,8 +524,8 @@
         </div>
           <div class="col-lg-2" style="font-size: 12px;">
             <div class="panel panel-info">
-           <div class="panel-heading" style="margin-top: 5px;">ACTION</div>
-               <div class="panel-content  " >
+           <div class=" detail-header bg-primary " style="margin-top: 5px;">ACTION</div>
+               <div class="detail-body panel-content  " >
                 <table>
              <td >
         <div class="tools">
@@ -524,16 +554,13 @@
         </form>
         @endif
         </td></table>
-        </div>
-        </div>
-        </div>            
 @endforeach
+             </div>
             </section>
+          </div>
         <!-- page end-->
       </section>
     <!--main content end-->
 @include('partials/footer')
-  </section>
-
 </body>
 </html>

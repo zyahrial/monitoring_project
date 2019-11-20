@@ -1,34 +1,15 @@
 <!DOCTYPE html>
 <title>KLIEN | INSERT</title>
 
-<html>
-  <!-- Bootstrap CSS -->
-  <link href="/NiceAdmin/css/bootstrap.min.css" rel="stylesheet">
-  <!-- bootstrap theme -->
-  <link href="/NiceAdmin/css/bootstrap-theme.css" rel="stylesheet">
-  <!--external css-->
-  <!-- font icon -->
-  <link href="/NiceAdmin/css/elegant-icons-style.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/font-awesome.min.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/daterangepicker.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/bootstrap-datepicker.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/bootstrap-colorpicker.css" rel="stylesheet" />
-  <!-- date picker -->
-
-  <!-- color picker -->
-
-  <!-- Custom styles -->
-  <link href="/NiceAdmin/css/style.css" rel="stylesheet">
-  <link href="/NiceAdmin/css/style-responsive.css" rel="stylesheet" />
-@include('partials/header')
-@include('partials/sidebar')
-
   <!-- Left side column. contains the logo and sidebar --> 
   <!-- Content Wrapper. Contains page content -->
-<body>
 
-      <section id="main-content">
-      <section class="wrapper" style="width: 70%;">
+<body class="hold-transition skin-blue sidebar-mini">
+      <section class="wrapper">
+        @include('partials/header2')
+          @include('partials.sidebar')
+  <div class="content-wrapper">
+    <section class="content" style="width: 70%;">
       @if (count($errors) > 0)
       <div class="alert alert-danger">
         <ul>
@@ -408,9 +389,10 @@
  <tr>
   <td><strong>NPWP :</strong>
                 <div class="form-group">
+                  <input size="50" name="no_npwp" class="form-control" type="text" id="no_npwp" value="{{ old('npwp') }}" placeholder="No NPWP" />
                     <input type="file" class="form-control" id="file" name="file" >
                    <small style="color: red;">Format File Harus PDF </small>
-                </div>
+   </div>
   </tr>
   <td>
             <input type="submit" name="add"  class="btn btn-sm btn-raised btn-primary" value="SIMPAN" title="SIMPAN">
@@ -420,11 +402,6 @@
 </form>
             </section>
           </div>
-        </div>
-        <!-- page end-->
-      </section>
-    </section>
-    <!--main content end-->
 @include('partials/footer')
   </section>           
 

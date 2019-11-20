@@ -1,135 +1,52 @@
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
-  <meta name="author" content="GeeksLabs">
-  <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
-  <link rel="shortcut icon" href="img/favicon.png">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="/assets/dist/css/skins/_all-skins.min.css">
+  <!-- Morris chart -->
+  <link rel="stylesheet" href="/assets/bower_components/morris.js/morris.css">
+  <!-- jvectormap -->
+  <link rel="stylesheet" href="/assets/bower_components/jvectormap/jquery-jvectormap.css">
+  <!-- Date Picker -->
+  <link rel="stylesheet" href="/assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="/assets/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+  <!-- bootstrap wysihtml5 - text editor -->
+  <link rel="stylesheet" href="/assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/css/bootstrap-select.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.min.js"></script>
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="/assets/bower_components/jvectormap/jquery-jvectormap.css">
 
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-  <!-- Bootstrap CSS -->
-  <link href="/NiceAdmin/css/bootstrap.css" rel="stylesheet">
-  <!-- bootstrap theme -->
-  <link href="/NiceAdmin/css/bootstrap-theme.css" rel="stylesheet">
-  <!--external css-->
-  <!-- font icon -->
-  <link href="/NiceAdmin/css/elegant-icons-style.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/font-awesome.min.css" rel="stylesheet" />
-  <!-- full calendar css-->
-  <link href="/NiceAdmin/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
-  <link href="/NiceAdmin/assets/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" />
-  <!-- easy pie chart-->
-  <link href="/NiceAdmin/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen" />
-  <!-- owl carousel -->
-  <link href="/NiceAdmin/stylesheet" href="css/owl.carousel.css" type="text/css">
-  <link href="/NiceAdmin/css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
-  <!-- Custom styles -->
-  <link rel="/NiceAdmin/css/fullcalendar.css">
-  <link href="/NiceAdmin/css/widgets.css" rel="stylesheet">
-  <link href="/NiceAdmin/css/style.css" rel="stylesheet">
-  <link href="/NiceAdmin/css/style-responsive.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/xcharts.min.css" rel=" stylesheet">
-  <link href="/NiceAdmin/css/jquery-ui-1.10.4.min.css" rel="stylesheet">
-  <!-- =======================================================
-    Theme Name: NiceAdmin
-    Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-    Author: BootstrapMade
-    Author URL: https://bootstrapmade.com
-  ======================================================= -->
-</head>
+  <link rel="stylesheet" href="/assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/assets/bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="/assets/bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/assets/dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="/assets/dist/css/skins/_all-skins.min.css">
+  <!-- Morris chart -->
+  <link rel="stylesheet" href="/assets/bower_components/morris.js/morris.css">
+  <!-- jvectormap -->
+  <link rel="stylesheet" href="/assets/bower_components/jvectormap/jquery-jvectormap.css">
+  <!-- Date Picker -->
+  <link rel="stylesheet" href="/assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="/assets/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+  <!-- bootstrap wysihtml5 - text editor -->
+  <link rel="stylesheet" href="/assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
-<body>
-  <!-- container section start -->
-  <section id="container" class="">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
 
-
-    <header class="header dark-bg">
-      <div class="toggle-nav">
-      <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
-      </div>
-
-      <!--logo start-->
-      <span class="lite" style="color: green;"><a href="/home" class="logo" style="color: green;">SPRINT</a></span>
-      <!--logo end-->
-      <div class="top-nav notification-row">
-        <!-- notificatoin dropdown start-->
-        <ul class="nav pull-right top-menu">
-
-      
-          <!-- user login dropdown start-->
-          <li class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                          <?php  
-                          if (empty(Auth::user()->name))
-                            {  header('location:/');
-                            exit();   } ?>
-                            <span class="username" >{{ Auth::user()->name }} </span>
-                            <b class="caret"></b>
-                        </a>
-            <ul class="dropdown-menu extended ">
-              <div class="log-arrow-up"></div>        
-              <li><a class="btn btn-default btn-flat" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                   </a>
-                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-             </li>
-            </ul>
-          </li>
-          <!-- user login dropdown end -->
-        </ul>
-        <!-- notificatoin dropdown end-->
-      </div>
-    </header>
-    <!--header end-->
-
-    <!-- javascripts -->
-  <script src="{{asset('NiceAdmin/js/jquery.js')}}"></script>
-  <script src="{{asset('NiceAdmin/js/jquery-ui-1.10.4.min.js')}}"></script>
-  <script src="{{asset('NiceAdmin/js/jquery-1.8.3.min.js')}}"></script>
-  <script type="text/javascript" src="{{asset('NiceAdmin/js/jquery-ui-1.9.2.custom.min.js')}}"></script>
-  <!-- bootstrap -->
-  <script src="{{asset('NiceAdmin/js/bootstrap.min.js')}}"></script>
-  <!-- nice scroll -->
-  <script src="{{asset('NiceAdmin/js/jquery.scrollTo.min.js')}}"></script>
-  <script src="{{asset('NiceAdmin/js/jquery.nicescroll.js')}}" type="text/javascript"></script>
-  <!-- charts scripts -->
-  <script src="{{asset('NiceAdmin/assets/jquery-knob/js/jquery.knob.js')}}"></script>
-  <script src="{{asset('NiceAdmin/js/jquery.sparkline.js')}}" type="text/javascript"></script>
-  <script src="{{asset('NiceAdmin/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js')}}"></script>
-  <script src="{{asset('NiceAdmin/js/owl.carousel.js')}}"></script>
-  <!-- jQuery full calendar -->
-  <<script src="{{asset('NiceAdmin/js/fullcalendar.min.js')}}"></script>
-    <!-- Full Google Calendar - Calendar -->
-    <script src="{{asset('NiceAdmin/assets/fullcalendar/fullcalendar/fullcalendar.js')}}"></script>
-    <!--script for this page only-->
-    <script src="{{asset('NiceAdmin/js/calendar-custom.js')}}"></script>
-    <script src="{{asset('NiceAdmin/js/jquery.rateit.min.js')}}"></script>
-    <!-- custom select -->
-    <script src="{{asset('NiceAdmin/js/jquery.customSelect.min.js')}}"></script>
-    <script src="{{asset('NiceAdmin/assets/chart-master/Chart.js')}}"></script>
-
-    <!--custome script for all page-->
-    <script src="{{asset('NiceAdmin/js/scripts.js')}}"></script>
-    <!-- custom script for this page-->
-    <script src="{{asset('NiceAdmin/js/sparkline-chart.js')}}"></script>
-    <script src="{{asset('NiceAdmin/js/easy-pie-chart.js')}}"></script>
-    <script src="{{asset('NiceAdmin/js/jquery-jvectormap-1.2.2.min.js')}}"></script>
-    <script src="{{asset('NiceAdmin/js/jquery-jvectormap-world-mill-en.js')}}"></script>
-    <script src="{{asset('NiceAdmin/js/xcharts.min.js')}}"></script>
-    <script src="{{asset('NiceAdmin/js/jquery.autosize.min.js')}}"></script>
-    <script src="{{asset('NiceAdmin/js/jquery.placeholder.min.js')}}"></script>
-    <script src="{{asset('NiceAdmin/js/gdp-data.js')}}"></script>
-    <script src="{{asset('NiceAdmin/js/morris.min.js')}}"></script>
-    <script src="{{asset('NiceAdmin/js/sparklines.js')}}"></script>
-    <script src="{{asset('NiceAdmin/js/charts.js')}}"></script>
-    <script src="{{asset('NiceAdmin/js/jquery.slimscroll.min.js')}}"></script>
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">  <!--sidebar start-->
+  <header class="main-header">
     <script>
       //knob
       $(function() {
@@ -174,3 +91,157 @@
         });
       });
     </script>
+    <!-- Logo -->
+    <a href="/home" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini " style="color: green;"><b>S</b>PM</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg" style="color: green;"><b>SPRINT</b></span>
+    </a>
+
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+ 
+
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown user user-menu">
+            <?php  
+                          if (empty(Auth::user()->name))
+                            {  header('location:/');
+                            exit();   } ?>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <span class="hidden-xs"> {{ Auth::user()->name }}</span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- User image -->
+              <li class="user-header">                 
+                <p>
+                 {{ Auth::user()->email }}
+                </p>
+              </li>
+              <!-- Menu Body -->
+              <li class="user-body">
+                <!-- /.row -->
+              </li>
+              <!-- Menu Footer-->
+              <li><a class="btn btn-default btn-flat" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                   </a>
+                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+             </li>
+            </ul>
+          </li>
+          <!-- Control Sidebar Toggle Button -->
+          <li>
+            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+          </li>
+        </ul>
+      </div>
+
+    </nav>
+  </header>
+    <!--header end-->
+
+    <!-- javascripts -->
+<script src="/assets/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="/assets/bower_components/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button);
+</script>
+<!-- Bootstrap 3.3.7 -->
+<script src="/assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- Morris.js charts -->
+<script src="/assets/bower_components/raphael/raphael.min.js"></script>
+<script src="/assets/bower_components/morris.js/morris.min.js"></script>
+<!-- Sparkline -->
+<script src="/assets/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+<!-- jvectormap -->
+<script src="/assets/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="/assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="/assets/bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="/assets/bower_components/moment/min/moment.min.js"></script>
+<script src="/assets/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- datepicker -->
+<script src="/assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="/assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<!-- Slimscroll -->
+<script src="/assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="/assets/bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="/assets/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="/assets/dist/js/pages/dashboard.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/assets/dist/js/demo.js"></script>
+    <script>
+      //knob
+      $(function() {
+        $(".knob").knob({
+          'draw': function() {
+            $(this.i).val(this.cv + '%')
+          }
+        })
+      });
+
+      //carousel
+      $(document).ready(function() {
+        $("#owl-slider").owlCarousel({
+          navigation: true,
+          slideSpeed: 300,
+          paginationSpeed: 400,
+          singleItem: true
+        });
+      });
+
+      //custom select box
+
+      $(function() {
+        $('select.styled').customSelect();
+      });
+
+      /* ---------- Map ---------- */
+      $(function() {
+        $('#map').vectorMap({
+          map: 'world_mill_en',
+          series: {
+            regions: [{
+              values: gdpData,
+              scale: ['#000', '#000'],
+              normalizeFunction: 'polynomial'
+            }]
+          },
+          backgroundColor: '#eef3f7',
+          onLabelShow: function(e, el, code) {
+            el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
+          }
+        });
+      });
+    </script>
+
+<!-- jQuery 3 -->
+    <script>  function open_child(url,title,w,h){
+        var left = (screen.width/2)-(w/2);
+        var top = (screen.height/2)-(h/2);
+        w = window.open(url, title, 'toolbar=no, location=no, directories=no, \n\
+        status=no, menubar=no, scrollbar=no, resizabel=no, copyhistory=no,\n\
+        width='+w+',height='+h+',top='+top+',left='+left);
+    };
+  </script>

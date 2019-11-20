@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <title>DETAIL KLIEN</title>
-@include('partials/header2')
         @php ($date_now = date('Y-m-d'))
         @php(
           $no = 1 {{-- buat nomor urut --}}
@@ -9,12 +8,18 @@
         @foreach ($klien as $data)
   <!-- Left side column. contains the logo and sidebar --> 
   <!-- Content Wrapper. Contains page content -->
-<body>
+<body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
       <section class="wrapper" style="background-color: white;">
-        <a href="/klien" style="color: blue;" >
-      <button class="btn-sm btn-success"><i class="fa fa-arrow-left"></i> Back To List</button></a>
+                @include('partials/header2')
+          @include('partials.sidebar')
+       <div class="content-wrapper">
+    <section class="content">
+                <div class="box-body" style="text-align: left;">
+      <a  href="/klien" class="btn btn-app">
+                <i class="fa fa-arrow-circle-left" title="BACK" style="font-size: 32px;"></i> </a>
+           </div>
             @include('alert.flash-message')    
-        <div class="panel-body " style="background-color: #F5F5F5; margin-left:5px; margin-right: 5px; ">
+<div class="panel-body " style="background-color: #F5F5F5; margin-left:5px; margin-right: 5px; ">
             <header class="bg-primary" style="color: white; padding-left: 5px; padding: 5px;"><strong>
               <i>REVIEW KLIEN ({{ $data->kd_klien }})</i></strong></header>
           <div class="col-xs-6" style="font-size: 12px; font-size: 14px; margin-top: 5px;">
@@ -27,7 +32,9 @@
                 <text style="color: blue;"> {{$data->email}}</text></strong></div>
               <div ><i class="fa fa-globe"></i><text style="color: #F5F5F5">__</text><strong>
                 <text style="color: blue;">{{$data->website}}</text></strong></div><br>
-              <strong><u>Alamat</u></strong><br><div style="color: blue;">{{$data->alamat}}</div>
+              <strong><u>Alamat</u></strong><br><div style="color: blue;">{{$data->alamat}}</div><br>
+              <strong><u>No.NPWP</u></strong><br><div style="color: blue;">{{$data->no_npwp}}</div>
+
             </address>
           </div>
             <div  style="font-size: 12px;  font-size: 14px; margin-top: 5px;" class="col-xs-6 text-right">
@@ -43,8 +50,8 @@
         @endif
               </address>
           </div>
-                        <table class="table table-advance table-bordered " style="font-size: 11px; ">
-                <thead style="background-color:#F0F8FF">
+           <table class="table table-advance table-bordered " style="font-size: 11px; background-color: white;">
+                <thead class="bg-primary">
              <td colspan="5" align="center" ><strong >CONTACT PERSON - OPERASIONAL</strong></td>
              <td colspan="5" align="center"><strong >CONTACT PERSON - PENAGIHAN/ADMINISTRASI</strong></td><tr>
             <th style="border-right-color:#F0F8FF  "><strong>NAMA</strong></td>
@@ -141,9 +148,9 @@
          </div>
         </div>
         <br>
-   <header class="bg-success" style="margin-top: 5px; color: white; background-color: green; padding: 5px"><strong>PENGALAMAN  - {{ $data->nama_klien }}</strong></header>
+   <header  class="bg-primary" style="margin-top: 5px; padding: 5px"><strong>PENGALAMAN  - {{ $data->nama_klien }}</strong></header>
   @endforeach
-     <table class="table table-advance table-bordered" style=" font-size: 11px; ">
+     <table class="table table-advance table-bordered" style=" font-size: 11px; background-color: white;">
 
             <thead class="bg-info">
             <td ><strong>KODE</strong></td>
@@ -192,8 +199,8 @@
    </tbody></div></table>
         {{ $pengalaman->fragment('foo')->links() }}
     <br>
-   <table class="table table-advance table-bordered" style="font-size: 11px; font-color:black;">
-       <header style="margin-top: 5px; color: white; background-color: red; padding: 5px"><strong> TENDER KALAH  - {{ $data->nama_klien }}</strong></header>
+   <table class="table table-advance table-bordered" style="font-size: 11px; font-color:black; background-color: white;">
+       <header class="bg-primary" style="margin-top: 5px; padding: 5px"><strong> TENDER KALAH  - {{ $data->nama_klien }}</strong></header>
                 <thead class="bg-info">
                    <th colspan="3"></th>
                    <td colspan="2" align="center"><strong>PROSES KAK RAB</strong></th>
@@ -263,8 +270,8 @@
          </table>
     {{ $his_pem_tender->fragment('foo')->links() }}
     <br>
-   <table class="table table-advance table-bordered" style="font-size: 11px; font-color:black;">
-   <header class="bg-danger" style="margin-top: 5px;color: white; background-color: red; padding: 5px">
+   <table class="table table-advance table-bordered" style="font-size: 11px; font-color:black; background-color: white;">
+   <header class="bg-primary" style="margin-top: 5px; padding: 5px">
     <strong>NON TENDER KALAH - {{ $data->nama_klien }}</strong></header>
     <thead class="bg-info"> <tr>
                <th style="border-right-color:#d9edf7  "><strong>CLOSE</strong></th>
@@ -332,13 +339,9 @@
     </table>
         {{ $his_pem_non_tender->fragment('foo')->links() }}
             </section>
-          </div>
-        </div>
 </div>
         <!-- page end-->
-      </section>
 @include('partials/footer')
   </section>
-
 </body>
 </html>

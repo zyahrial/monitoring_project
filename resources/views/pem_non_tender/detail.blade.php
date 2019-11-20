@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <title>REVIEW PENJUALAN (NON TENDER)</title>
-@include('partials/header2')
-  <!-- Left side column. contains the logo and sidebar --> 
-  <!-- Content Wrapper. Contains page content -->
-<body>
+<body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
       <section class="wrapper" style="background-color: white;">
+                @include('partials/header2')
+          @include('partials.sidebar')
+       <div class="content-wrapper">
+    <section class="content" style="background-color: white;">
       @if(checkPermission(['admin','superadmin']))
-      <a href="/pem_non_tender" style="color: blue;" title="Klik Untuk Melihat Detail">
-      <button class="btn-sm btn-success"><i class="fa fa-arrow-left"></i> Back To List</button></a>
+          <div class="box-body" style="text-align: left;">
+      <a href="/pem_non_tender" class="btn btn-app">
+                <i class="fa fa-arrow-circle-left" title="BACK" style="font-size: 32px;"></i> </a>
+           </div>
       @endif
-      <br><br>
       @include('alert.flash-message')
         @php ($date_now = date('Y-m-d'))
         @php(
@@ -70,75 +72,105 @@
         @php ($nilai_negosiasi = (number_format($data->nilai_negosiasi,0,",",".").""))
         @endif
 
-<header class="bg-primary" style="color: white; padding-left: 5px; padding: 5px;">
-<strong><i>REVIEW PENJUALAN (NON TENDER) {{ $data->kd_pn_non_tender }}</i></strong></header>
-        <div class="panel-body" style="margin-left:10px; margin-right: 10px; ">
-          <div class="col-xs-6" style="font-size: 12px;">
-            <address>           
-              <div><strong><u>GRUP JASA</u></strong></div>
-             <div style="color: blue; margin-left: 10px; font-size: 14px;"><p style="font-family: Helvetica;">{{$data->kelompok_jasa}}</p></div>
-             <div><strong><u>SUB JASA</u> </strong></div>
-             <div style="color: blue; margin-left: 10px; font-size: 14px;">
-              <p style="font-family: Helvetica;">{{$data->sub_jasa}}</p></div>
-             <div> <strong><u>NAMA PEKERJAAN</u> </strong></div>
-             <div style="color: blue; margin-left: 10px; font-size: 14px;">
-              <p style="font-family: Helvetica;">{{$data->nama_pekerjaan}}</p></div>
-             <div> <strong><u>BIDANG / SUB BIDANG PEKERJAAN </u></strong></div>
-             <div style="color: blue; margin-left: 10px; font-size: 14px;">
-              <p style="font-family: Helvetica;">{{$data->sub_pekerjaan}}</p></div>
-            </address>
+<header class="bg-primary detail" >
+<strong><i>REVIEW PENJUALAN (NON TENDER) {{ $data->kd_pn_non_tender }}</i></strong>
+</header>
+   <div class="info-box " style="width: 90%;">
+            <span class="info-box-icon" style="background-color: white;"><i class="fa fa-building"></i></span>
+
+            <div class="info-box-content">
+           <span class="info-box-text">NAMA KLIEN</span>
+              <span class="info-box-number">{{$data->nama_klien}}</span>
+                <div class="progress">
+                <div class="progress-bar"></div>
+              </div>
+                             <span class="info-box-text">ALAMAT</span>
+              <span class="info-box-number">{{ $data->alamat }}</span>
+              <div class="progress">
+                <div class="progress-bar"></div>
+              </div>
+                             <span class="info-box-text">TELP</span>
+              <span class="info-box-number">{{ $data->telp_fax }}</span>
+            </div>
+            <!-- /.info-box-content -->
           </div>
+        <div class="panel-body" style="margin-left:10px; margin-right: 10px; ">
+      <div class="col-md-3">
+                  <!-- /.info-box -->
+          <div class="info-box bg-aqua">
+            <span class="info-box-icon"><i class="fa fa-location-arrow"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text"><strong>LOKASI PEKERJAAN :</strong></span>
+              <span class="info-box-number" style="font-size: 12px;"> {{ $data->lokasi_pekerjaan }}</span>
+                                                        <hr>
+                            <span class="info-box-text"><strong>PERMINTAAN :</strong></span>
+                                          <span class="info-box-number" style="font-size: 12px;">{{$tgl_permintaan}}</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <div class="info-box bg-aqua">
+            <span class="info-box-icon"><i class="fa fa-handshake-o"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text"><strong>GRUP JASA :</strong></span>
+              <span class="info-box-number" style="font-size: 12px;">{{$data->kelompok_jasa}}</span>
+              <hr>
+               <span class="info-box-text"><strong>SUB JASA :</strong></span>
+              <span class="info-box-number" style="font-size: 12px;">{{$data->sub_jasa}}</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+        </div>
+          <div class="col-md-3">
+                  <!-- /.info-box -->
+          <div class="info-box bg-aqua">
+            <span class="info-box-icon"><i class="fa fa-tasks"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text"><strong>NAMA PEKERJAAN :</strong> </span>
+              <span class="info-box-number" style="font-size: 12px;">{{$data->nama_pekerjaan}}</span>
+              <hr>
+                            <span class="info-box-text"><strong>SUB PEKERJAAN :</strong></span>
+                                          <span class="info-box-number" style="font-size: 12px;">{{$data->sub_pekerjaan}}</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+                   <div class="info-box bg-aqua">
+            <span class="info-box-icon"><i class="fa fa-exchange"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text"><strong>RINGKASAN RUANG LINGKUP</strong></span>
+              <hr>
+              <span class="info-box-number" style="font-size: 12px;">{{$data->ringkasan_lingkup}}</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+        </div>
+        <div class="col-md-3">
+                  <!-- /.info-box -->
+          <div class="info-box bg-blue">
+            <span class="info-box-icon"><i class="fa fa-users"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text"><strong>STATUS :</strong> </span>
+              <span class="info-box-number" style="font-size: 12px;">{{$data->status}}</span>
+                            <span class="info-box-text"><strong>CP SPRINT :</strong></span>
+                                          <span class="info-box-number" style="font-size: 12px;">{{$data->cp_internal}}<br>{{$data->cp_internal_email}}</span>
+                                          <hr>
+                            <span class="info-box-text"><strong>CONTACT PERSON :</strong></span>
+                                          <span class="info-box-number" style="font-size: 12px;">{{$data->cp_ops_nama1}}<br>{{$data->cp_ops_telp1}}<br>{{$data->cp_ops_email1}}</span>
+                                          <hr>
+                                          <span class="info-box-text"><strong>SUMBER INFORMASI :</strong></span>
+                                          <span class="info-box-number" style="font-size: 12px;">{{$data->informasi_nama}}<br>{{$data->informasi_telp}}<br>{{$data->informasi_email}}</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+        </div>
             <div  style="font-size: 12px;" class="col-xs-6 text-right">
-            <address>
-          <div style="color: blue; font-size: 14px;"><text style="background-color: blue; color: white; padding: 5px;">{{$data->status}}</div><br>
-              <div><strong><u>CP SPRINT</u></strong></div>
-              <div style="color: blue;margin-right: 10px; font-size: 14px;">
-                <p style="font-family: Helvetica;">{{$data->cp_internal}}</p></div>
-              <div><strong><u>CP EMAIL</u></strong></div>
-              <div style="color: blue;margin-right: 10px; font-size: 14px;">
-                <p style="font-family: Helvetica;">{{$data->cp_internal_email}}</p></div>
-              <div><strong><u>PERMINTAAN</u></strong></div>
-              <div style="color: blue;margin-right: 10px; font-size: 14px;">
-                <p style="font-family: Helvetica;">{{$tgl_permintaan}}</p></div>
-              </address>
           </div>
         </div>
         <div class="row" style="margin-left:10px; margin-right: 10px;">
-          <div class="col-lg-6" style="font-size: 12px;">
-            <div class="panel panel-info">
-           <div class="panel-heading" style="margin-top: 5px;">KLIEN ({{ $data->kd_klien }})</div>
-              <div class="panel-content" style="height: 250px; font-size:14px; background-color: #F5F5F5">
-              <i class="fa fa-building-o"></i><text style="color: white">__</text><strong>{{$data->nama_klien}}</strong><br>
-              <i class="fa fa-phone"></i><text style="color: white">__</text><strong>{{$data->telp_fax}}</strong><br>
-              <i class="fa fa-envelope"></i><text style="color: white">__</text><strong>{{$data->email}}</strong><br>
-              <i class="fa fa-globe"></i><text style="color: white">__</text><strong>{{$data->website}}</strong><br>
-              <br>
-              <strong><u>Alamat</u></strong><br><i>{{$data->alamat}}</i>
-            </div>
-          </div>
         </div>
-        <div class="col-lg-3 fadein" style="font-size: 12px;">
-            <div class="panel panel-info">
-           <div class="panel-heading" style="margin-top: 5px;">CONTACT PERSON</div>
-               <div class="panel-content " style="height: 250px; background-color: #F5F5F5">
-                   <div><strong><u>NAMA</u></strong></div><div><i>{{$data->cp_ops_nama1}}</i></div><br>
-                  <div><strong><u>TELP</u></strong></div><div><i>{{$data->cp_ops_telp1}}</i></div><br>
-                  <div><strong><u>EMAIL</u></strong></div><div><i>{{$data->cp_ops_email1}}</i></div><br>
-            </div>
-          </div>
-          </div>
-          <div class="col-lg-3" style="font-size: 12px; " >
-            <div class="panel panel-info">
-            <div class="panel-heading" style="margin-top: 5px;">SUMBER INFORMASI</div>
-               <div class="panel-content" style="height: 250px; background-color: #F5F5F5">
-                   <div><strong><u>NAMA</u></strong></div><div><i>{{$data->informasi_nama}}</i></div><br>
-                  <div><strong><u>TELP</u></strong></div><div><i>{{$data->informasi_telp}}</i></div><br>
-                  <div><strong><u>EMAIL</u></strong></div><div><i>{{$data->informasi_email}}</i></div><br>
-            </div>
-          </div>
-          </div>
-        </div>
-        <header class="bg-primary" style="color: white; padding-left: 5px; padding: 5px;">
+<header class="bg-primary detail" >
 <strong><i>ALUR PENJUALAN (NON TENDER) {{ $data->kd_pn_non_tender }}</i></strong></header>
 <br>
            <div>
@@ -146,8 +178,8 @@
         </div>
           <div class="col-lg-2" style="font-size: 12px;">
             <div class="panel panel-info">
-           <div class="panel-heading" style="margin-top: 5px; ">CANVASSING</div>
-               <div class="panel-content bg-success " style="height: 150px;">
+           <div class="bg-primary detail-header"> CANVASSING</div>
+               <div class="detail-body panel-content " style="height: 150px;">
                    <div><strong><u>Tanggal</u></strong></div><div>{{$tgl_canvasing}}</div><br>
                    <div><a href="#hasil1" data-toggle="modal"><text style="color: blue;">Lihat Hasil</text></a></div>
             </div>
@@ -171,8 +203,8 @@
         </div>
           <div class="col-lg-2" style="font-size: 12px;">
             <div class="panel panel-info">
-           <div class="panel-heading" style="margin-top: 5px;">PROSES KAK & RAB</div>
-               <div class="panel-content bg-success " style="height: 150px;">
+          <div class="bg-primary detail-header">PROSES KAK & RAB</div>
+               <div class="detail-body panel-content " style="height: 150px;">
                    <div><strong><u>Tanggal</u></strong></div><div>{{$tgl_kak}}</div><br>                                   
                    <div><strong><u>Nilai</u></strong></div><div> {{$nilai_kak}}</div>
             </div>
@@ -183,8 +215,8 @@
         </div>
           <div class="col-lg-2" style="font-size: 12px;">
             <div class="panel panel-info">
-           <div class="panel-heading" style="margin-top: 5px;">PROPOSAL</div>
-               <div class="panel-content bg-success " style="height: 150px;" >
+          <div class="bg-primary detail-header">PROPOSAL</div>
+               <div class="detail-body panel-content " style="height: 150px;" >
                    <div><strong><u>Tanggal</u></strong></div><div>{{$tgl_proposal}}</div><br>                                    
                    <div><strong><u>Harga Penawaran</u></strong></div><div>{{$nilai_penawaran}}</div>
             </div>
@@ -195,8 +227,8 @@
         </div>
       <div class="col-lg-2" style="font-size: 12px;">
             <div class="panel panel-info">
-           <div class="panel-heading" style="margin-top: 5px;">PRESENTASI</div>
-               <div class="panel-content bg-success " style="height: 150px;">
+          <div class="bg-primary detail-header">PRESENTASI</div>
+               <div class="detail-body panel-content " style="height: 150px;">
                   <div><strong><u>Tanggal</u></strong></div><div>{{$tgl_presentasi}}</div><br>
             </div>
           </div>
@@ -206,8 +238,8 @@
         </div>
           <div class="col-lg-2" style="font-size: 12px;">
             <div class="panel panel-info">
-           <div class="panel-heading" style="margin-top: 5px;">PROSES NEGOSIASI</div>
-               <div class="panel-content bg-success " style="height: 150px;" >
+          <div class="bg-primary detail-header">PROSES NEGOSIASI</div>
+               <div class="detail-body panel-content " style="height: 150px;" >
                    <div><strong><u>Tanggal</u></strong></div><div>{{$tgl_negosiasi}}</div><br>                                     
                    <div><strong><u>Hasil Nilai</u></strong></div><div>{{$nilai_negosiasi}}</div>
             </div>
@@ -218,8 +250,8 @@
         </div>
          <div class="col-lg-2" style="font-size: 12px;">
             <div class="panel panel-info">
-           <div class="panel-heading" style="margin-top: 5px;">FOLLOW UP</div>
-               <div class="panel-content bg-success " style="height: 150px;">
+          <div class="bg-primary detail-header">FOLLOW UP</div>
+               <div class="detail-body panel-content " style="height: 150px;">
                          <div><strong><u>Tanggal</u></strong></div><div>{{$tgl_followup}}</div><br>
                     <div><a href="#status" data-toggle="modal"><text style="color: blue;">Lihat Status</text></a></div>
             </div>
@@ -243,8 +275,8 @@
         </div>  
         <div class="col-lg-2" style="font-size: 12px;">
             <div class="panel panel-info">
-           <div class="panel-heading" style="margin-top: 5px;">PELUANG DAPAT (%)</div>
-               <div class="panel-content bg-success " style="height: 150px;">
+          <div class="bg-primary detail-header">PELUANG DAPAT (%)</div>
+               <div class="detail-body panel-content " style="height: 150px;">
       <h1 align="center"><strong>{{ $data->peluang }} %</strong></h2>
             </div>
           </div>
@@ -254,8 +286,8 @@
         </div>  
                     <div class="col-lg-2" style="font-size: 12px;">
             <div class="panel panel-info">
-           <div class="panel-heading" style="margin-top: 5px;">ACTION</div>
-               <div class="panel-content  " >
+          <div class="bg-primary detail-header">ACTION</div>
+               <div class="detail-body panel-content" >
                 <table>
              <td >
         <div class="tools">

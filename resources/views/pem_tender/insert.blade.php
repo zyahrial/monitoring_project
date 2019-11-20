@@ -1,33 +1,14 @@
 <!DOCTYPE html>
 <title>PENJUALAN (TENDER) | INSERT</title>
-<html>
-  <!-- Bootstrap CSS -->
-  <link href="/NiceAdmin/css/bootstrap.min.css" rel="stylesheet">
-  <!-- bootstrap theme -->
-  <link href="/NiceAdmin/css/bootstrap-theme.css" rel="stylesheet">
-  <!--external css-->
-  <!-- font icon -->
-  <link href="/NiceAdmin/css/elegant-icons-style.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/font-awesome.min.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/daterangepicker.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/bootstrap-datepicker.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/bootstrap-colorpicker.css" rel="stylesheet" />
-  <!-- date picker -->
-
-  <!-- color picker -->
-
-  <!-- Custom styles -->
-  <link href="/NiceAdmin/css/style.css" rel="stylesheet">
-  <link href="/NiceAdmin/css/style-responsive.css" rel="stylesheet" />
-@include('partials/header')
-@include('partials/sidebar')
-
   <!-- Left side column. contains the logo and sidebar --> 
   <!-- Content Wrapper. Contains page content -->
-<body>
 
-      <section id="main-content">
-      <section class="wrapper" style="width: 70%;">
+<body class="hold-transition skin-blue sidebar-mini">
+      <section class="wrapper">
+        @include('partials/header2')
+          @include('partials.sidebar')
+  <div class="content-wrapper">
+    <section class="content" style="width: 70%;">
       @if (count($errors) > 0)
       <div class="alert alert-danger">
         <ul>
@@ -378,6 +359,7 @@ onkeyup="document.getElementById('format2').innerHTML = formatCurrency(this.valu
   <td><strong>CONTACT PERSON SPRINT<text style="color: red; size: 15px;">*</text></strong></td>
 <td>
 <div class='input-group date' >
+  <input type="hidden" id="kode">
 <input class="form-control" type="text" name="cp_internal" readonly id="nama" placeholder="PILIH PERSONIL"  value="{{ old('cp_internal') }}" />
 <span class="input-group-addon" onclick="open_child('/pem_tender/lookup/lookup_karyawan','Look Up','800','500'); return false;">
 <i class="fa fa-user"></i></span>
@@ -385,6 +367,7 @@ onkeyup="document.getElementById('format2').innerHTML = formatCurrency(this.valu
 <div style="margin-top: 5px;">
 <input  class="form-control" type="email" name="cp_internal_email" id="email" readonly value="{{ old('cp_internal_email') }}" />
 </div>
+  <input type="hidden" id="jabatan">
 </tr>
     @endif
     @if(checkPermission(['user']))
@@ -392,6 +375,7 @@ onkeyup="document.getElementById('format2').innerHTML = formatCurrency(this.valu
   <td><strong>CONTACT PERSON SPRINT<text style="color: red; size: 15px;">*</text></strong></td>
 <td>
 <div class='input-group date' >
+<input type="hidden" id="kode">
 <input class="form-control" type="text" name="cp_internal" readonly id="nama" placeholder="Your Name" readonly value="{{ Auth::user()->name }}"/>
 <span class="input-group-addon" onclick="open_child('/pem_tender/lookup/lookup_karyawan','Look Up','800','500'); return false;">
 <i class="fa fa-user"></i></span>
@@ -399,6 +383,7 @@ onkeyup="document.getElementById('format2').innerHTML = formatCurrency(this.valu
 <div style="margin-top: 5px;">
 <input style="color: blue" class="form-control" type="email" readonly name="cp_internal_email" value="{{ Auth::user()->email }}" />
 </div>
+  <input type="hidden" id="jabatan">
 </tr>
     @endif
 <td>

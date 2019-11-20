@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <title>KLIEN</title>
-@include('partials/header2')
+
   <!-- Left side column. contains the logo and sidebar --> 
   <!-- Content Wrapper. Contains page content -->
-<body>
+<body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
       <section class="wrapper">
-        <div class="row">
-          <div class="col-lg-12">
-            <section class="panel">
+        @include('partials/header2')
+          @include('partials.sidebar')
+  <div class="content-wrapper">
+    <section class="content">
              @include('alert.flash-message')
-  <header class="bg-primary" style="color: white; padding-left: 5px; padding: 5px;">
  <nav >
         @if(checkPermission(['admin','superadmin']))
       <!-- Sidebar toggle button-->
@@ -18,9 +18,11 @@
     <i class="fa fa-plus"></i> Tambah</button></a>
         @endif
     <a href="{{ URL('/klien') }}" >
-<button class="btn-sm btn-success pull-left" style="margin-top: 5px; margin-bottom: 5px; margin-left: 5px;">
+<button class="btn-sm btn-success pull-left" style="margin-top: 5px; margin-bottom: 5px; margin-left: 5px; ">
  <i class="fa fa-refresh"></i> Refresh</button></a>
-   <div class="btn-group" role="group">
+
+<div style="text-align: right;">
+<div class="btn-group" role="group">
 <form class="navbar-form" action="{{ url('klien/') }}" method="GET"  >
 <input type="text" class="form-control" placeholder="Filter Klien.." name="nama_klien" onChange="form.submit()" 
 style="margin-top: 5px; margin-bottom: 5px; margin-left: 20px;"></input>
@@ -38,10 +40,10 @@ style="margin-top: 5px; margin-bottom: 5px; "></input>
 style="margin-top: 5px; margin-bottom: 5px; "></input>
 </form>
 </div>
-    </nav>
-      </header>
+</div>
+</nav>
 
-              <table  class="table table-advance table-hover" style="font-size: 11px;">
+              <table id="example2" class="table table-bordered table-hover" style="background-color: white;">
                 <thead class="bg-info">
                   <tr>
             <th ><strong>KODE</strong></td>
@@ -88,7 +90,6 @@ style="margin-top: 5px; margin-bottom: 5px; "></input>
                 </div>
             </section>
           </div>
-        </div>
         <!-- page end-->
       </section>
     <!--main content end-->

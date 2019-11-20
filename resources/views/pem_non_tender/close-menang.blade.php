@@ -1,38 +1,18 @@
 <!DOCTYPE html>
 <title>PENJUALAN (NON TENDER) | CLOSING</title>
 <html>
-  <!-- Bootstrap CSS -->
-  <link href="/NiceAdmin/css/bootstrap.min.css" rel="stylesheet">
-  <!-- bootstrap theme -->
-  <link href="/NiceAdmin/css/bootstrap-theme.css" rel="stylesheet">
-  <!--external css-->
-  <!-- font icon -->
-  <link href="/NiceAdmin/css/elegant-icons-style.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/font-awesome.min.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/daterangepicker.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/bootstrap-datepicker.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/bootstrap-colorpicker.css" rel="stylesheet" />
-  <!-- date picker -->
-
-  <!-- color picker -->
-
-  <!-- Custom styles -->
-  <link href="/NiceAdmin/css/style.css" rel="stylesheet">
-  <link href="/NiceAdmin/css/style-responsive.css" rel="stylesheet" />
-@include('partials/header')
-@include('partials/sidebar')
-
-  <!-- Left side column. contains the logo and sidebar --> 
-  <!-- Content Wrapper. Contains page content -->
-<body>
+<body class="hold-transition skin-blue sidebar-mini">
+      <section class="wrapper">
+        @include('partials/header2')
+          @include('partials.sidebar')
+  <div class="content-wrapper">
+    <section class="content" style="width: 70%;">
     <script language="JavaScript">
   function MM_openBrWindow(theURL,winName,features) { //v2.0
   window.open(theURL,winName,features).focus();
   }
   </script>
 @foreach ($pen_non_tender as $datas)
-      <section id="main-content" >
-      <section class="wrapper" style="width: 70%">
               @if (count($errors) > 0)
       <div class="alert alert-danger">
         <ul>

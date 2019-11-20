@@ -1,30 +1,11 @@
 <!DOCTYPE html>
 <title>PENGALAMAN</title>
-@include('partials/header2')
-  <!-- Left side column. contains the logo and sidebar --> 
-  <!-- Content Wrapper. Contains page content -->
-    <link href="/NiceAdmin/css/bootstrap.min.css" rel="stylesheet">
-  <!-- bootstrap theme -->
-  <link href="/NiceAdmin/css/bootstrap-theme.css" rel="stylesheet">
-  <!--external css-->
-  <!-- font icon -->
-  <link href="/NiceAdmin/css/elegant-icons-style.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/font-awesome.min.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/daterangepicker.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/bootstrap-datepicker.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/bootstrap-colorpicker.css" rel="stylesheet" />
-  <!-- date picker -->
-
-  <!-- color picker -->
-
-  <!-- Custom styles -->
-  <link href="/NiceAdmin/css/style.css" rel="stylesheet">
-  <link href="/NiceAdmin/css/style-responsive.css" rel="stylesheet" />
-<body>
+<body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
       <section class="wrapper">
-        <div class="row">
-          <div class="col-lg-12">
-            <section class="panel">
+        @include('partials/header2')
+          @include('partials.sidebar')
+  <div class="content-wrapper">
+    <section class="content"> 
              @include('alert.flash-message')
       <header class="bg-primary" style="color: white; padding-left: 5px; padding: 5px;">
       <nav >
@@ -36,6 +17,7 @@
     <a href="{{ URL('/pengalaman') }}" >
  <button class="btn-sm btn-success pull-left" style="margin-left: 5px; margin-top: 5px; margin-bottom: 5px;">
  <i class="fa fa-refresh"></i> Refresh</button></a>
+ <div style="text-align: right;">
    <div class="btn-group" role="group">
 <form class="navbar-form" action="{{ url('pengalaman/') }}" method="GET"  >
 <input type="text" class="form-control" placeholder="Filter Klien.." name="nama_klien"  style="margin-left: 20px; margin-top: 5px; margin-bottom: 5px;"></input>
@@ -63,10 +45,11 @@
 <button class="btn btn-sm btn-raised btn-success" onChange="form.submit()">Cari</button>
 </form> 
 </div>
+</div>
           @endif
     </nav> 
     </header>
-    <table class="table table-advance table-bordered" style=" font-size: 11px; ">
+              <table id="example2" class="table table-bordered table-hover" style="background-color: white;">
     <thead class="bg-info">
     <th ><strong>KODE</strong></td>
       <th style="border-right-color:#d9edf7; width: 15%;"><strong>KLIEN</strong></td>

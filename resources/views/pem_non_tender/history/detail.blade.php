@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <title>HISTORY PENJUALAN (NON TENDER)</title>
-@include('partials/header2')
-  <!-- Left side column. contains the logo and sidebar --> 
-  <!-- Content Wrapper. Contains page content -->
-<body>
-      <section class="wrapper" >
+<body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
+      <section class="wrapper" style="background-color: white;">
+                @include('partials/header2')
+          @include('partials.sidebar')
+       <div class="content-wrapper">
+    <section class="content" style="background-color: white;">
       @if(checkPermission(['admin','superadmin']))
         <a href="/history/pem_non_tender/" style="color: blue;" title="Klik Untuk Melihat Detail">
       <button class="btn-sm btn-default"><i class="fa fa-arrow-left"></i> Back To List</button></a>
@@ -68,7 +69,7 @@
         @else
         @php ($nilai_negosiasi = (number_format($data->nilai_negosiasi,0,",",".").""))
         @endif
- <div class="panel-heading bg-danger" >
+        <div class="panel-heading bg-red bg-red bg-red detail" ><strong>
 <strong><i>HISTORY PENJUALAN (NON TENDER) {{ $data->kd_pn_non_tender }} </i></strong></div>
         <div class="panel-body" style="margin-left:10px; margin-right: 10px; ">
           <div class="col-xs-6" style="font-size: 12px;">
@@ -121,8 +122,8 @@
         <div class="row" style="margin-left:10px; margin-right: 10px;">
           <div class="col-lg-12" style="font-size: 12px;">
             <div class="panel panel-default">
-           <div class="panel-heading" style="margin-top: 5px;">SUMBER INFORMASI</div>
-              <div class="panel-content" style="height: 250px; background-color: #F5F5F5">
+           <div class="panel-heading bg-red" style="margin-top: 5px;">SUMBER INFORMASI</div>
+              <div class="panel-content detail-body" style="height: 250px; background-color: #F5F5F5">
                   <div><strong><u>NAMA</u></strong></div><div><i>{{$data->informasi_nama}}</i></div><br>
                   <div><strong><u>TELP</u></strong></div><div><i>{{$data->informasi_telp}}</i></div><br>
                   <div><strong><u>EMAIL</u></strong></div><div><i>{{$data->informasi_email}}</i></div><br>
@@ -131,8 +132,8 @@
         </div>   
           <div class="col-lg-2" style="font-size: 12px;">
             <div class="panel panel-default">
-           <div class="panel-heading" style="margin-top: 5px; ">CANVASSING</div>
-               <div class="panel-content" style="height: 150px; background-color: #eee">
+           <div class="panel-heading bg-red" style="margin-top: 5px; ">CANVASSING</div>
+               <div class="panel-content detail-body" style="height: 150px; background-color: #eee">
                    <div><strong><u>Tanggal</u></strong></div><div>{{$tgl_canvasing}}</div><br>
                    <div><a href="#hasil1" data-toggle="modal"><small class="bg-info">Lihat Hasil</small></a></div>
             </div>
@@ -153,8 +154,8 @@
           </div>
           <div class="col-lg-2" style="font-size: 12px;">
             <div class="panel panel-default">
-           <div class="panel-heading" style="margin-top: 5px;">PROSES KAK & RAB</div>
-               <div class="panel-content" style="height: 150px; background-color: #eee">
+           <div class="panel-heading bg-red" style="margin-top: 5px;">PROSES KAK & RAB</div>
+               <div class="panel-content detail-body" style="height: 150px; background-color: #eee">
                    <div><strong><u>Tanggal</u></strong></div><div>{{$tgl_kak}}</div><br>
                    <div><strong><u>Hasil</u></strong></div><div>{{$nilai_kak}}</div>
             </div>
@@ -162,8 +163,8 @@
           </div>
           <div class="col-lg-2" style="font-size: 12px;">
             <div class="panel panel-default">
-           <div class="panel-heading" style="margin-top: 5px;">TANGGAL PROPOSAL</div>
-               <div class="panel-content" style="height: 150px; background-color: #eee" >
+           <div class="panel-heading bg-red" style="margin-top: 5px;">TANGGAL PROPOSAL</div>
+               <div class="panel-content detail-body" style="height: 150px; background-color: #eee" >
                    <div><strong><u>Tanggal</u></strong></div><div>{{$tgl_proposal}}</div><br>                                  
                    <div><strong><u>Harga Penawaran</u></strong></div><div>{{$nilai_penawaran}}</div>
             </div>
@@ -171,16 +172,16 @@
           </div>
       <div class="col-lg-2" style="font-size: 12px;">
             <div class="panel panel-default">
-           <div class="panel-heading" style="margin-top: 5px;">TANGGAL PRESENTASI</div>
-               <div class="panel-content" style="height: 150px; background-color: #eee">
+           <div class="panel-heading bg-red" style="margin-top: 5px;">TANGGAL PRESENTASI</div>
+               <div class="panel-content detail-body" style="height: 150px; background-color: #eee">
                   <div><strong><u>Tanggal</u></strong></div><div>{{$tgl_presentasi}}</div><br>
             </div>
           </div>
       </div>
           <div class="col-lg-2" style="font-size: 12px;">
             <div class="panel panel-default">
-           <div class="panel-heading" style="margin-top: 5px;">PROSES NEGOSIASI</div>
-               <div class="panel-content" style="height: 150px; background-color: #eee" >
+           <div class="panel-heading bg-red" style="margin-top: 5px;">PROSES NEGOSIASI</div>
+               <div class="panel-content detail-body" style="height: 150px; background-color: #eee" >
                    <div><strong><u>Tanggal</u></strong></div><div>{{$tgl_negosiasi}}</div><br>                                
                    <div><strong><u>Hasil</u></strong></div><div>{{$nilai_negosiasi}}</div>
             </div>
@@ -188,8 +189,8 @@
           </div>
          <div class="col-lg-2" style="font-size: 12px;">
             <div class="panel panel-default">
-           <div class="panel-heading" style="margin-top: 5px;">HISTORY FOLLOW UP</div>
-               <div class="panel-content" style="height: 150px; background-color: #eee">
+           <div class="panel-heading bg-red" style="margin-top: 5px;">HISTORY FOLLOW UP</div>
+               <div class="panel-content detail-body" style="height: 150px; background-color: #eee">
                          <div><strong><u>Tanggal</u></strong></div><div>{{$tgl_followup}}</div><br>
                     <div><a href="#status" data-toggle="modal"><small class="bg-info">Lihat Status</small></a></div>
             </div>
@@ -210,8 +211,8 @@
                 </div>
         <div class="col-lg-2" style="font-size: 12px;">
             <div class="panel panel-default">
-           <div class="panel-heading" style="margin-top: 5px;">PELUANG DAPAT (%)</div>
-               <div class="panel-content" style="height: 150px; background-color: #eee">
+           <div class="panel-heading bg-red" style="margin-top: 5px;">PELUANG DAPAT (%)</div>
+               <div class="panel-content detail-body" style="height: 150px; background-color: #eee">
       <h1 align="center"><strong>{{ $data->peluang }} %</strong></h1>
           </div>
           </div>

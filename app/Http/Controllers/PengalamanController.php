@@ -235,6 +235,13 @@ $ref = '-REF';
     where('kd_pengalaman',$kd_pengalaman)->get(); 
     return view('pengalaman/edit',compact('pengalaman'));
     }
+
+    function generate($kd_pengalaman)
+    {
+    $pengalaman = Klien::join('mkt_pengalaman', 'mkt_klien.kd_klien', '=', 'mkt_pengalaman.kd_klien')->
+    where('kd_pengalaman',$kd_pengalaman)->get(); 
+    return view('pengalaman/generate_proyek',compact('pengalaman'));
+    }
  
     function update(Request $request, $kd_pengalaman)
     {

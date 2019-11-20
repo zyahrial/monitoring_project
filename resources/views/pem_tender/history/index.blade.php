@@ -1,20 +1,21 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <title>HISTORY PENJUALAN (TENDER)</title>
-@include('partials/header2')
-  <!-- Left side column. contains the logo and sidebar --> 
-  <!-- Content Wrapper. Contains page content -->
-<body>
+<body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
       <section class="wrapper">
-        <div class="row">
-          <div class="col-lg-12">
-            <section class="panel">
+        @include('partials/header2')
+          @include('partials.sidebar')
+  <div class="content-wrapper">
+    <section class="content"> 
              @include('alert.flash-message')
        <header class="bg-primary" style="color: white; padding-left: 5px; padding: 5px;">
+                <i>HISTORY PENJUALAN (TENDER)</i>
+
  <nav >
       <!-- Sidebar toggle button-->
     <a href="{{ URL('/history/pem_tender') }}" >
      <button class="btn-sm btn-success pull-left" style="margin-left: 5px; margin-top: 5px; margin-bottom: 5px;">
- <i class="fa fa-refresh"></i> Refresh</button></a>          
+ <i class="fa fa-refresh"></i> Refresh</button></a>    
+ <div style="text-align: right;">      
    <div class="btn-group" role="group">
 <form class="navbar-form" action="{{ url('/history/pem_tender') }}" method="GET"  >
 <input type="text" class="form-control" placeholder="Filter Klien.." name="nama_klien" onChange="form.submit()" style="margin-left: 20px; margin-top: 5px; margin-bottom: 5px;"></input>
@@ -25,9 +26,10 @@
 <input type="text" class="form-control" placeholder="Filter Pic.." name="cp_internal" onChange="form.submit()" style="margin-left: 1px; margin-top: 5px; margin-bottom: 5px;"></input>
 </form> 
 </div>
+</div>
     </nav> 
       </header>
-<table class="table table-advance table-bordered table-hover" style="font-size: 11px; ">
+              <table id="example2" class="table table-bordered table-hover" style="background-color: white;">
                 <thead class="bg-info">
                    <th colspan="4"></th>
                    <td colspan="2" align="center" style="width:15%;"><strong>PROSES<text style="color:#d9edf7;" >_</text>KAK/RAB</strong></th>

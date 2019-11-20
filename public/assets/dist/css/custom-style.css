@@ -1,0 +1,32 @@
+<style>
+#detail-header {
+padding-top : 10px;
+padding-bottom : 10px; 
+border-radius : 5px 5px 0px 0px; 
+text-align : center;
+color: white;
+
+}
+
+.detail-header {
+padding-top : 10px;
+padding-bottom : 10px; 
+border-radius : 5px 5px 0px 0px; 
+text-align : center;
+color: white;
+}
+
+.detail-body {
+padding : 10px;
+background-color: #eee;
+}
+
+.detail{
+border-radius : 10px; 
+color: white; 
+padding-left: 5px; 
+padding: 5px;
+}
+
+
+</style>

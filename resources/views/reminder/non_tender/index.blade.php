@@ -1,34 +1,16 @@
 <!DOCTYPE html>
 <title>Alur Reminder Penjualan (Non Tender)</title>
-<html>
-  <!-- Bootstrap CSS -->
-  <link href="/NiceAdmin/css/bootstrap.min.css" rel="stylesheet">
-  <!-- bootstrap theme -->
-  <link href="/NiceAdmin/css/bootstrap-theme.css" rel="stylesheet">
-  <!--external css-->
-  <!-- font icon -->
-  <link href="/NiceAdmin/css/elegant-icons-style.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/font-awesome.min.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/daterangepicker.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/bootstrap-datepicker.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/bootstrap-colorpicker.css" rel="stylesheet" />
-  <!-- date picker -->
-
-  <!-- color picker -->
-
-  <!-- Custom styles -->
-  <link href="/NiceAdmin/css/style.css" rel="stylesheet">
-  <link href="/NiceAdmin/css/style-responsive.css" rel="stylesheet" />
-@include('partials/header')
-@include('partials/sidebar')
-<body>
-      <section id="main-content">
-      <section class="wrapper" >
+<body class="hold-transition skin-blue sidebar-mini">
+      <section class="wrapper">
+        @include('partials/header2')
+          @include('partials.sidebar')
+  <div class="content-wrapper">
+    <section class="content">
                    @include('alert.flash-message')
     <div class="row">
           <div class="col-lg-12">
             <section class="panel">
-              <header class="panel-heading">Alur Reminder Penjualan (Non Tender)
+              <header class="panel-heading bg-primary">Alur Reminder Penjualan (Non Tender)
               </header>
               <div class="panel-body">
                <div class="panel-heading" style="margin-left:10px; margin-right: 10px; ">Logic

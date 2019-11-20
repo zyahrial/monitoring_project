@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <title>REKANAN</title>
-@include('partials/header2')
-  <!-- Left side column. contains the logo and sidebar --> 
+ <!-- Left side column. contains the logo and sidebar --> 
   <!-- Content Wrapper. Contains page content -->
-<body>
+<body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
       <section class="wrapper">
-        <div class="row">
-          <div class="col-lg-12">
-            <section class="panel">
+        @include('partials/header2')
+          @include('partials.sidebar')
+  <div class="content-wrapper">
+    <section class="content">
              @include('alert.flash-message')
        <header class="bg-primary" style="color: white; padding-left: 5px; padding: 5px;">
  <nav >
@@ -20,13 +20,14 @@
     <a href="{{ URL('/rekanan') }}"   >
        <button class="btn-sm btn-success pull-left" style="margin-top: 5px; margin-bottom: 5px; margin-left: 5px;">
  <i class="fa fa-refresh"></i> Refresh</button></a>
-
+<div style="text-align: right;">
 <form class="navbar-form" action="{{ url('rekanan/') }}" method="GET"  >
 <input type="text" class="form-control" placeholder="Filter Klien.." name="nama_klien" onChange="form.submit()" style="margin-top: 5px; margin-bottom: 5px; margin-left: 20px;"></input>
 </form> 
+</div>
     </nav>
       </header>
-<table class="table table-advance table-bordered " style="font-size: 11px; ">
+              <table id="example2" class="table table-bordered table-hover" style="background-color: white;">
                 <thead class="bg-info">
                   <tr>
             <th align="center" rowspan="2" style="border-right-color:#d9edf7; "></td>
@@ -126,9 +127,6 @@
         </div>
         <!-- page end-->
       </section>
-    <!--main content end-->
-    </div>
-  </section>
 @include('partials/footer')
 
 </body>

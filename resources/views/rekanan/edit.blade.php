@@ -1,34 +1,12 @@
 <!DOCTYPE html>
 <title>REKANAN | UPDATE</title>
 
-<html>
-  <!-- Bootstrap CSS -->
-  <link href="/NiceAdmin/css/bootstrap.min.css" rel="stylesheet">
-  <!-- bootstrap theme -->
-  <link href="/NiceAdmin/css/bootstrap-theme.css" rel="stylesheet">
-  <!--external css-->
-  <!-- font icon -->
-  <link href="/NiceAdmin/css/elegant-icons-style.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/font-awesome.min.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/daterangepicker.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/bootstrap-datepicker.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/bootstrap-colorpicker.css" rel="stylesheet" />
-  <!-- date picker -->
-
-  <!-- color picker -->
-
-  <!-- Custom styles -->
-  <link href="/NiceAdmin/css/style.css" rel="stylesheet">
-  <link href="/NiceAdmin/css/style-responsive.css" rel="stylesheet" />
-@include('partials/header')
-@include('partials/sidebar')
-
-  <!-- Left side column. contains the logo and sidebar --> 
-  <!-- Content Wrapper. Contains page content -->
-<body>
-
-      <section id="main-content">
-      <section class="wrapper" style="width: 70%">
+<body class="hold-transition skin-blue sidebar-mini">
+      <section class="wrapper">
+        @include('partials/header2')
+          @include('partials.sidebar')
+  <div class="content-wrapper">
+    <section class="content" style="width: 70%">
       @if (count($errors) > 0)
       <div class="alert alert-danger">
         <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -180,30 +158,10 @@
  </table >
 </form>
 @endforeach
-            </section>
-          </div>
-        </div>
-        <!-- page end-->
-      </section>
-    </section>
-    <!--main content end-->
-    <div class="text-right">
-      <div class="credits">
-          <!--
-            All the links in the footer should remain intact.
-            You can delete the links only if you purchased the pro version.
-            Licensing information: https://bootstrapmade.com/license/
-            Purchase the pro version form: https://bootstrapmade.com/buy/?theme=NiceAdmin
-          -->
-          Designed by <a href="#">SprintONE</a>
-        </div>
-    </div>
-  </section>           
-
-    <!-- javascripts -->
-  <script src="/NiceAdmin/js/jquery.min.js"></script>
-
-<script src="/NiceAdmin/js/jquery-ui.min.js"></script>
+@include('partials/footer')
+            </section>  
+            </div>
+            </section>                
  <script type="text/javascript">
   $(function() {
 $("#tanggal_mulai").datepicker();
@@ -219,14 +177,5 @@ $("#tanggal_berakhir").datepicker();
         width='+w+',height='+h+',top='+top+',left='+left);
     };
   </script>
-    <!-- bootstrap-wysiwyg -->
-  <script src="/NiceAdmin/js/jquery.hotkeys.js"></script>
-  <script src="/NiceAdmin/js/bootstrap-wysiwyg.js"></script>
-  <script src="/NiceAdmin/js/bootstrap-wysiwyg-custom.js"></script>
-  <script src="/NiceAdmin/js/moment.js"></script>
-  <script src="/NiceAdmin/js/bootstrap-colorpicker.js"></script>
-  <script src="/NiceAdmin/js/daterangepicker.js"></script>
-  <script src="/NiceAdmin/js/bootstrap-datepicker.js"></script>
-<!-- Date -->
 </body>
 </html>

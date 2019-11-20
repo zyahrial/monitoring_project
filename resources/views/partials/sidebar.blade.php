@@ -1,127 +1,219 @@
-  <link href="/NiceAdmin/css/bootstrap.min.css" rel="stylesheet">
-  <!-- bootstrap theme -->
-  <link href="/NiceAdmin/css/bootstrap-theme.css" rel="stylesheet">
-  <!--external css-->
-  <!-- font icon -->
-  <link href="/NiceAdmin/css/elegant-icons-style.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/font-awesome.min.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/daterangepicker.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/bootstrap-datepicker.css" rel="stylesheet" />
-  <link href="/NiceAdmin/css/bootstrap-colorpicker.css" rel="stylesheet" />
-  <!-- date picker -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="/assets/bower_components/jvectormap/jquery-jvectormap.css">
 
-  <!-- color picker -->
+  <link rel="stylesheet" href="/assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/assets/bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="/assets/bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/assets/dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="/assets/dist/css/skins/_all-skins.min.css">
+  <!-- Morris chart -->
+  <link rel="stylesheet" href="/assets/bower_components/morris.js/morris.css">
+  <!-- jvectormap -->
+  <link rel="stylesheet" href="/assets/bower_components/jvectormap/jquery-jvectormap.css">
+  <!-- Date Picker -->
+  <link rel="stylesheet" href="/assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="/assets/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+  <!-- bootstrap wysihtml5 - text editor -->
+  <link rel="stylesheet" href="/assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
-  <!-- Custom styles -->
-  <link href="/NiceAdmin/css/style.css" rel="stylesheet">
-  <link href="/NiceAdmin/css/style-responsive.css" rel="stylesheet" />
-<!--sidebar start-->
-    <aside>
-      <div id="sidebar" class="navbar navbar-expand-lg navbar-light bg-light">
-        <!-- sidebar menu start-->
-        <ul class="sidebar-menu">
-          <li class="active">
-            <a class="" href="/home">
-                          <i class="icon_house_alt"></i>
-                          <span>Dashboard</span>
-            </a>
-          </li>
+<style type="text/css">
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
+input[type=number] {
+    -moz-appearance:textfield;
+}
+</style>
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">  <!--sidebar start-->
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <!-- search form -->
+      <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Search...">
+          <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+        </div>
+      </form>
+      <!-- /.search form -->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
                    @if(checkPermission(['admin','superadmin']))
-          <li class="sub-menu">
-            <a href="javascript:;" class="">
-                          <i class="icon_document_alt"></i>
-                          <span>Master</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-            <ul class="sub">
-              <li><a class="" href="/klien">Klien</a></li>
-              <li><a class="" href="/ta">Tenaga Ahli</a></li>
-               <li><a class="" href="/rekanan">Rekanan</a></li>
-               <li><a class="" href="/pem_tender">Tender</a></li>
-               <li><a class="" href="/pem_non_tender">Non Tender</a></li>
-               <li><a class="" href="/pengalaman">Pengalaman</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;" class="">
-                          <i class="fa fa-archive"></i>
-                          <span>History</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-             </a>
-            <ul class="sub">
-            <li><a class="" href="/history/pem_tender">History Tender</a></li>
-            <li><a class="" href="/history/pem_non_tender">History Non Tender</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;" class="">
-                          <i class="icon_genius"></i>
-                          <span>WS</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-             </a>
-            <ul class="sub">
-             <li><a class="" href="/mail">Reminder Rekanan</a></li>
-             <li><a class="" href="/reminder_pengalaman">Reminder Pengalaman</a></li>
-             <li><a class="" href="/reminder_tender">Reminder (Tender)</a></li>
-             <li><a class="" href="/reminder_non_tender">Reminder (Non Tender)</a></li>
-            </ul>
-          </li>
-                    <li class="sub-menu">
-            <a href="javascript:;" class="">
-                          <i class="fa fa-user"></i>
-                          <span>User</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-             </a>
-            <ul class="sub">
-             <li><a class="" href="/user">Setting</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-          <a href="javascript:;" class="">
-                          <i class="fa fa-file-excel-o"> </i>
-                          <span>Report</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">MAIN NAVIGATION</li>
+        <li class="active treeview menu-open">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
           </a>
-            <ul class="sub">
-             <li><a class="" data-toggle="modal" href="#ModalUser">User</a></li></li>
-             <li><a class="" data-toggle="modal" href="#ModalKlien">Klien</a></li>
-             <li><a class="" data-toggle="modal" href="#ModalTa">Tenaga Ahli</a></li>
-             <li><a class="" data-toggle="modal" href="#ModalRekanan">Rekanan</a></li>
-              <li><a class="" data-toggle="modal" href="#ModalPengalaman">Pengalaman</a></li>
-            </ul>
-          </li>
-            @endif
+                    <ul class="treeview-menu">
+            <li><a href="/home"><i class="fa fa-circle-o"></i>Dashboard</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-pie-chart"></i>
+            <span>Master</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+              <li><a  href="/klien">  Klien</a></li>
+              <li><a  href="/ta">  Tenaga Ahli</a></li>
+               <li><a  href="/rekanan">   Rekanan</a></li>
+               <li><a  href="/pem_tender">   Tender</a></li>
+               <li><a  href="/pem_non_tender">   Non Tender</a></li>
+               <li><a  href="/pengalaman">   Pengalaman</a></li>
+               <li><a  href="/proyek">   Proyek</a></li>
+              <li><a  href="/uudp"> -UUDP</a></li>
+                            <li><a  href="/sppd"> -SPPD</a></li>
+
+          </ul>
+        </li>
+      
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-folder"></i> <span>History</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a  href="/history/pem_tender">  History Tender</a></li>
+            <li><a  href="/history/pem_non_tender">  History Non Tender</a></li>
+            <li><a  href="/proyek/close">  Project Close</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-share"></i> <span>Notif Set</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+             <li><a  href="/mail"> Notif Rekanan</a></li>
+             <li><a  href="/reminder_pengalaman"> Notif Pengalaman</a></li>
+             <li><a  href="/reminder_tender"> Notif (Tender)</a></li>
+             <li><a  href="/reminder_non_tender"> Notif (Non Tender)</a></li>
+             <li><a  href="/proyek/notif"> Notif Proyek</a></li>
+          </ul>
+        </li>
+
+                <li class="treeview">
+          <a href="#">
+            <i class="fa fa-user"></i> <span>User</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+             <li><a  href="/user"> Setting</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-file-excel-o"></i> <span>Report</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a  data-toggle="modal" href="#ModalUser"> User</a></li></li>
+             <li><a  data-toggle="modal" href="#ModalKlien"> Klien</a></li>
+             <li><a  data-toggle="modal" href="#ModalTa"> Tenaga Ahli</a></li>
+             <li><a  data-toggle="modal" href="#ModalRekanan"> Rekanan</a></li>
+              <li><a  data-toggle="modal" href="#ModalPengalaman"> Pengalaman</a></li>          
+          </ul>
+        </li>
+
+                <li class="treeview">
+          <a href="#">
+            <i class="fa fa-cogs"></i> <span>Library</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+             <li><a  data-toggle="modal" href="/jasa"> Lib Jasa</a></li></li>
+             <li><a  data-toggle="modal" href="/activity"> Lib Kegiatan</a></li>
+             <li><a  data-toggle="modal" href="/ib/lib/lib_item_biaya"> Lib Item Biaya</a></li>
+
+          </ul>
+        </li>
+      </ul>
+      @endif
              @if(checkPermission(['user']))
-          <li class="sub-menu">
-            <a href="javascript:;" class="">
-                          <i class="icon_document_alt"></i>
-                          <span>Master</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-            <ul class="sub">
-               <li><a class="" href="/klien">Klien</a></li>
-              <li><a class="" href="/ta">Tenaga Ahli</a></li>
-               <li><a class="" href="/rekanan">Rekanan</a></li>
-               <li><a class="" href="/pem_tender_user">Penjualan (Tender)</a></li>
-               <li><a class="" href="/pem_non_tender_user">Penjualan Non (Tender)</a></li>
-               <li><a class="" href="/pengalaman_user">Pengalaman</a></li>
-            </ul>
-          </li>
-            <li class="sub-menu">
-            <a href="javascript:;" class="">
-                          <i class="fa fa-user"></i>
-                          <span>User</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-             </a>
-            <ul class="sub">
-             <li><a class="" href="/profile">Password</a></li>
-            </ul>
-          </li>
+           <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">MAIN NAVIGATION</li>
+        <li class="active treeview menu-open">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-pie-chart"></i>
+            <span>Master</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+              <li><a class="" href="/klien"> Klien</a></li>
+              <li><a class="" href="/ta"> Tenaga Ahli</a></li>
+               <li><a class="" href="/rekanan"> Rekanan</a></li>
+               <li><a class="" href="/pem_tender_user"> Penjualan (Tender)</a></li>
+               <li><a class="" href="/pem_non_tender_user"> Penjualan Non (Tender)</a></li>
+               <li><a class="" href="/pengalaman_user"> Pengalaman</a></li>
+                <li><a class="" href="/proyek/index_user"> Proyek</a></li>
+
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-user"></i> <span> User</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+              <li><a class="" href="/profile"> Password</a></li>
+          </ul>
+        </li>
+      </ul>
            @endif
-        </ul>
-        <!-- sidebar menu end-->
-      </div>
-    </aside>
+     </section>
+    <!-- /.sidebar -->
+  </aside>
 
 {{--modal pengalaman--}}
 <div class="modal fade" id="ModalPengalaman" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -173,6 +265,40 @@
 <div class="modal-footer">
 <button class="btn-sm btn-success" id="form-submit" type="submit">
 <i class="fa fa-file-excel-o"> </i> Export To Excel</button>
+</form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {{--modal Klien--}}
+<div class="modal fade" id="ModalKlien" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Laporan Klien</h4>
+                      </div>
+                      <div class="modal-body">
+<div class="btn-group" role="group">
+    <style>
+  /* Style the input field */
+  #myInput {
+    padding: 20px;
+    margin-top: -6px;
+    border: 0;
+    border-radius: 0;
+    background: #f1f1f1;
+  }
+  </style>
+<form class="navbar-form" action="{{ url('klien_export/') }}" method="GET"  >
+
+</div>
+</div>
+
+                      <div class="modal-footer">
+                        <button class="btn-sm btn-success" type="button" onclick="form.submit()">
+                          <i class="fa fa-file-excel-o"> </i> Export To Excel</button>
 </form>
                       </div>
                     </div>
@@ -233,20 +359,10 @@ $( "#myform" ).validate({
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 
-<script src="/NiceAdmin/js/jquery.min.js"></script>
-<script src="/NiceAdmin/js/jquery-ui.min.js"></script>
-     <script type="text/javascript">
+  <script type="text/javascript">
   $(function() {
 $("#mulai").datepicker();
 $("#selesai").datepicker();
   });
   </script>
-    <!-- bootstrap-wysiwyg -->
-  <script src="/NiceAdmin/js/jquery.hotkeys.js"></script>
-  <script src="/NiceAdmin/js/bootstrap-wysiwyg.js"></script>
-  <script src="/NiceAdmin/js/bootstrap-wysiwyg-custom.js"></script>
-  <script src="/NiceAdmin/js/moment.js"></script>
-  <script src="/NiceAdmin/js/bootstrap-colorpicker.js"></script>
-  <script src="/NiceAdmin/js/daterangepicker.js"></script>
-  <script src="/NiceAdmin/js/bootstrap-datepicker.js"></script>
-    <!--sidebar end-->
+

@@ -150,6 +150,7 @@ class KlienController extends Controller
     $data->telp_fax = $request->get('telp_fax');
     $data->email = $request->get('email');
     $data->website = $request->get('website'); 
+    $data->no_npwp = $request->get('no_npwp'); 
 
     if (empty($request->file('file'))){
         }else{
@@ -303,6 +304,7 @@ class KlienController extends Controller
     $klien->telp_fax = $request->get('telp_fax');
     $klien->email = $request->get('email');
     $klien->website = $request->get('website');  
+    $klien->no_npwp = $request->get('no_npwp'); 
 
         if (empty($request->file('file'))){
         $klien->npwp = $klien->npwp;

@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <title>REVIEW TENAGA AHLI</title>
-@include('partials/header2')
-  <!-- Left side column. contains the logo and sidebar --> 
-  <!-- Content Wrapper. Contains page content -->
-<body>
-      <section class="wrapper" style="background-color: white; color: black;">
-<a href="/ta" style="color: blue;" >
-      <button class="btn-sm btn-success"><i class="fa fa-arrow-left"></i> Back To List</button></a><br><br>
+<body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
+      <section class="wrapper" style="background-color: white;">
+                @include('partials/header2')
+          @include('partials.sidebar')
+       <div class="content-wrapper">
+    <section class="content">
+                <div class="box-body" style="text-align: left;">
+      <a  href="/ta" class="btn btn-app">
+                <i class="fa fa-arrow-circle-left" title="BACK" style="font-size: 32px;"></i> </a>
+           </div>
       @include('alert.flash-message')
         @php ($date_now = date('Y-m-d'))
         @php(
@@ -62,8 +65,8 @@
               <div style="color: blue;"><a href="/file/npwp_ta/{{ $data->no_npwp }}.pdf" target="_blank" title="Download NPWP">{{$data->no_npwp}}</a></div>
               </address>
           </div>
-<table class="table table-advance" style="font-size: 12px; ">
-                <thead class="bg-info">
+              <table id="example2" class="table table-bordered " style="background-color: white;">
+                <thead class="bg-primary">
                <th style="border-right-color:#d9edf7  "></th> <th style="border-right-color:#d9edf7  "><strong>UNIVERSITAS</strong></th>
                <th style="border-right-color:#d9edf7; "><strong>JURUSAN</strong></th>
 <th style="border-right-color:#d9edf7; width:8%;"><strong>TGL LULUS</strong></th>
@@ -153,11 +156,8 @@
       </div>
     </div>
 </div>
-
 @endforeach
             </section>
-          </div>
-        </div>
 </div>
         <!-- page end-->
       </section>

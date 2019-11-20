@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <title>TENAGA AHLI</title>
-@include('partials/header2')
-  <!-- Left side column. contains the logo and sidebar --> 
-  <!-- Content Wrapper. Contains page content -->
-<body>
+<body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
       <section class="wrapper">
-        <div class="row">
-          <div class="col-lg-12">
-            <section class="panel">
+        @include('partials/header2')
+          @include('partials.sidebar')
+  <div class="content-wrapper">
+    <section class="content">
              @include('alert.flash-message')
        <header class="bg-primary" style="color: white; padding-left: 5px; padding: 5px;">
  <nav >
@@ -20,6 +18,8 @@
     <a href="{{ URL('/ta') }}" >
      <button class="btn-sm btn-success pull-left"  style="margin-left: 5px; margin-top: 5px; margin-bottom: 5px;">
  <i class="fa fa-refresh"></i> Refresh</button></a>
+
+ <div style="text-align: right;">
    <div class="btn-group" role="group">
 <form class="navbar-form" action="{{ url('ta/') }}" method="GET"  >
 <input type="text" class="form-control" placeholder="Filter Nama.." name="nama" onChange="form.submit()" style="margin-left: 20px; margin-top: 5px; margin-bottom: 5px;"></input>
@@ -29,10 +29,11 @@
 <form class="navbar-form" action="{{ url('ta/') }}" method="GET"  >
 <input type="text" class="form-control" placeholder="Filter Universitas.." name="universitas" onChange="form.submit()" style="margin-left: 2px; margin-top: 5px; margin-bottom: 5px;"></input>
 </form>
-</div> 
+</div>
+</div>
     </nav> 
       </header>
-<table class="table table-advance table-bordered table-hover" style="font-size: 11px; ">
+              <table id="example2" class="table table-bordered table-hover" style="background-color: white;">
                 <thead class="bg-info">                   
                <tr>
                <th style="border-right-color:#d9edf7  "><strong>NO</strong></th>
@@ -74,7 +75,6 @@
                 </div>
             </section>
           </div>
-    </div>
 </div>
         <!-- page end-->
       </section>
