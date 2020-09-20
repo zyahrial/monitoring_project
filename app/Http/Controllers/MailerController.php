@@ -21,368 +21,368 @@ use PHPMailer\PHPMailer\Exception;
 class MailerController extends Controller
 { 
 
-function mail_rekanan(Request $request){
+  function mail_rekanan(Request $request){
  
-$today = date("Y-m-d");
-  
-$count = Rekanan::where('tanggal_berakhir', '>', $today)->count();
-$mail = MailRekanan::orderBy('primary_mail', 'asc')->get();
-$query = Rekanan::orderBy('tanggal_berakhir', 'asc')->get();
+    $today = date("Y-m-d");
+      
+    $count = Rekanan::where('tanggal_berakhir', '>', $today)->count();
+    $mail = MailRekanan::orderBy('primary_mail', 'asc')->get();
+    $query = Rekanan::orderBy('tanggal_berakhir', 'asc')->get();
 
-foreach($mail as $mails){
-$primary =  $mails->primary_mail;
-$second =  $mails->secondary_mail;
+    foreach($mail as $mails){
+    $primary =  $mails->primary_mail;
+    $second =  $mails->secondary_mail;
 
-foreach($query as $data){
+    foreach($query as $data){
 
-//$i1 = (7 * 1);
-//$i2 = (7 * 2);
-//$i3 = (7 * 3);
-//$i4 = (7 * 4);
-if (empty($data->tanggal_berakhir)){
-}elseif ($today > $data->tanggal_berakhir) {
+    //$i1 = (7 * 1);
+    //$i2 = (7 * 2);
+    //$i3 = (7 * 3);
+    //$i4 = (7 * 4);
+    if (empty($data->tanggal_berakhir)){
+    }elseif ($today > $data->tanggal_berakhir) {
 
-try {
-$mail = new PHPMailer(true);
-{
-$body ="
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Notif Data Rekanan </title>
-</head>
-<body>
+    try {
+    $mail = new PHPMailer(true);
+    {
+    $body ="
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>Notif Data Rekanan </title>
+        </head>
+        <body>
 
-     <div class='main' style='background: #fafafa; max-width: 500px; border-top: solid 3px #f55422; box-shadow: 0 0 25px rgba(0,0,0,0.05); margin:auto;''>
-        
-        <div class='header' style='padding: 30px; background: #f2f2f2;'> 
-<img src='https://sprint.co.id/wp-content/uploads/2018/09/Sprint-Consultant-Member-of-Sucofindo.png' style='display: block; margin: auto; height : 50px; width : auto;'>
-        </div>
-        
-<div class='content' style='padding: 30px; padding-bottom: 40px;'>
-<h4> Hi Tim Marketing, </h4>
-<h3> Harap lakukan pembaruan data rekanan :</h3>
-<table >
-       <tr><td style='padding : 5px;'><strong>NAMA KLIEN</td><td style='padding : 5px;'>".$data->nama_klien."</td></tr>
-       <tr><td style='padding : 5px;'><strong>ALAMAT URL</strong></td><td style='padding : 5px;'>".$data->url."</td></tr>
-       <tr><td style='padding : 5px;'><strong>EXPIRED</strong></td><td style='padding : 5px;'>".$data->tanggal_berakhir."</td></tr>
-</td>
-    </tr>  
-    </table>         
-      </div>      
-        <div class='footer' style='background: black; padding: 30px; color: grey; line-height: 18px; font-size: 12px; text-align: center;'>Graha Sucofindo, 12th Floor, JL Raya Pasar Minggu, Kavling 34, RT.3/RW.4, Pancoran, Kec. Pancoran, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12780</div>
-        
-      </div>
+             <div class='main' style='background: #fafafa; max-width: 500px; border-top: solid 3px #f55422; box-shadow: 0 0 25px rgba(0,0,0,0.05); margin:auto;''>
+                
+                <div class='header' style='padding: 30px; background: #f2f2f2;'> 
+        <img src='https://sprint.co.id/wp-content/uploads/2018/09/Sprint-Consultant-Member-of-Sucofindo.png' style='display: block; margin: auto; height : 50px; width : auto;'>
+                </div>
+                
+        <div class='content' style='padding: 30px; padding-bottom: 40px;'>
+        <h4> Hi Tim Marketing, </h4>
+        <h3> Harap lakukan pembaruan data rekanan :</h3>
+        <table >
+               <tr><td style='padding : 5px;'><strong>NAMA KLIEN</td><td style='padding : 5px;'>".$data->nama_klien."</td></tr>
+               <tr><td style='padding : 5px;'><strong>ALAMAT URL</strong></td><td style='padding : 5px;'>".$data->url."</td></tr>
+               <tr><td style='padding : 5px;'><strong>EXPIRED</strong></td><td style='padding : 5px;'>".$data->tanggal_berakhir."</td></tr>
+        </td>
+            </tr>  
+            </table>         
+              </div>      
+                <div class='footer' style='background: black; padding: 30px; color: grey; line-height: 18px; font-size: 12px; text-align: center;'>Graha Sucofindo, 12th Floor, JL Raya Pasar Minggu, Kavling 34, RT.3/RW.4, Pancoran, Kec. Pancoran, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12780</div>
+                
+              </div>
 
- </body>
+         </body>
 
-</html>";
+        </html>";
 
-$mail = new PHPMailer;
-//Tell PHPMailer to use SMTP
-$mail->isSMTP();
-//Enable SMTP debugging
-// 0 = off (for production use)
-// 1 = client messages
-// 2 = client and server messages
-$mail->SMTPDebug = 2;
-//Ask for HTML-friendly debug output
-$mail->Debugoutput = 'html';
-//Set the hostname of the mail server
-$mail->Host = 'smtp.gmail.com';
-// use
-// $mail->Host = gethostbyname('smtp.gmail.com');
-// if your network does not support SMTP over IPv6
-//Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
-$mail->Port = 587;
-//Set the encryption system to use - ssl (deprecated) or tls
-$mail->SMTPSecure = 'tls';
-//Whether to use SMTP authentication
-$mail->SMTPAuth = true;
-$mail->SMTPAutoTLS = true;
+        $mail = new PHPMailer;
+        //Tell PHPMailer to use SMTP
+        $mail->isSMTP();
+        //Enable SMTP debugging
+        // 0 = off (for production use)
+        // 1 = client messages
+        // 2 = client and server messages
+        $mail->SMTPDebug = 2;
+        //Ask for HTML-friendly debug output
+        $mail->Debugoutput = 'html';
+        //Set the hostname of the mail server
+        $mail->Host = 'smtp.gmail.com';
+        // use
+        // $mail->Host = gethostbyname('smtp.gmail.com');
+        // if your network does not support SMTP over IPv6
+        //Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
+        $mail->Port = 587;
+        //Set the encryption system to use - ssl (deprecated) or tls
+        $mail->SMTPSecure = 'tls';
+        //Whether to use SMTP authentication
+        $mail->SMTPAuth = true;
+        $mail->SMTPAutoTLS = true;
 
-$mail->SMTPOptions = array(
-        'ssl' => array(
-        'verify_peer' => false,
-        'verify_peer_name' => false,
-        'allow_self_signed' => false
-      )
-   );
+        $mail->SMTPOptions = array(
+                'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => false
+              )
+           );
 
-$mail->Username = 'sprint.idapps@gmail.com';
+    $mail->Username = 'sprint.idapps@gmail.com';
 
-$mail->Password = 'sprint==19';
+    $mail->Password = 'sprint==19';
 
-$mail->setFrom('sprint.idapps@gmail.com', 'Sprint Server');
+    $mail->setFrom('sprint.idapps@gmail.com', 'Sprint Server');
 
-$mail->addReplyTo('sprint.idapps@gmail.com', 'Sprint Server');
+    $mail->addReplyTo('sprint.idapps@gmail.com', 'Sprint Server');
 
-$mail->AddAddress($primary);
+    $mail->AddAddress($primary);
 
-if (empty($second)){
-}else{
-  $mail->AddCC($second);
+    if (empty($second)){
+    }else{
+      $mail->AddCC($second);
+    }
+
+    $mail->Subject = '[Reminder] Rekanan';
+
+    $mail->MsgHTML($body);
+
+    $mail->IsHTML(true); // send as HTML
+
+    $mail->Send();
+
+    }
+
+    echo 'Message Has Success.';
+    } catch (phpmailerException $e) {
+    echo $e->errorMessage();
+
+    }
+
+    }
+
+    else {
+
+    echo "tidak ada warning"; 
+    }
+    }
+    }
 }
 
-$mail->Subject = '[Reminder] Rekanan';
+  function mail_tender(Request $request){
 
-$mail->MsgHTML($body);
-
-$mail->IsHTML(true); // send as HTML
-
-$mail->Send();
-
-}
-
-echo 'Message Has Success.';
-} catch (phpmailerException $e) {
-echo $e->errorMessage();
-
-}
-
-}
-
-else {
-
-echo "tidak ada warning"; 
-}
-}
-}
-}
-
-function mail_tender(Request $request){
-
-$today = date("Y-m-d");
+    $today = date("Y-m-d");
     $query = Klien::join('mkt_pem_tender', 'mkt_klien.kd_klien', '=', 'mkt_pem_tender.kd_klien')
     ->select('mkt_klien.*', 'mkt_pem_tender.*')->get();
 
 foreach($query as $data){
 
-$end = new DateTime($data->tgl_kak);
- $today = date("Y-m-d");
- $start = date_create($today);
- $diff = date_diff($end,$start);
+    $end = new DateTime($data->tgl_kak);
+     $today = date("Y-m-d");
+     $start = date_create($today);
+     $diff = date_diff($end,$start);
 
- $d = ( $diff->format("%R%a"));
+     $d = ( $diff->format("%R%a"));
 
-if ($start < $end){
+    if ($start < $end){
 
-try {
-$mail = new PHPMailer(true);
-{
-$body ="
-<head>
-  <title>Notif update data tender</title>
-</head>
-<body>
+    try {
+    $mail = new PHPMailer(true);
+    {
+    $body ="
+          <head>
+            <title>Notif update data tender</title>
+          </head>
+          <body>
 
-     <div class='main' style='background: #fafafa; max-width: 500px; border-top: solid 3px #f55422; box-shadow: 0 0 25px rgba(0,0,0,0.05); margin:auto;''>
-        
-        <div class='header' style='padding: 30px; background: #f2f2f2;'> 
-<img src='https://sprint.co.id/wp-content/uploads/2018/09/Sprint-Consultant-Member-of-Sucofindo.png' style='display: block; margin: auto; height : 50px; width : auto;'>
-        </div>
-        
-        <div class='content' style='padding: 30px; padding-bottom: 40px;'>
-        <h4> Hi ".$data->cp_internal.", </h4>
-        <h3> harap lakukan update data tender :</h3>
-        
-<table >
-      <tr><td style='padding : 5px;'><strong>NAMA KLIEN</strong></td> <td style='padding : 5px;'>".$data->nama_klien."</td></tr>
-      <tr><td style='padding : 5px;'><strong>KELOMPOK JASA</strong></td><td style='padding : 5px;'>".$data->kelompok_jasa."</td></tr>
-      <tr><td style='padding : 5px;'><strong>GRUP JASA</strong></td><td style='padding : 5px;'>".$data->sub_jasa."</td></tr>
-      <tr><td style='padding : 5px;'><strong>NAMA PEKERJAAN</strong></td> <td style='padding : 5px;'>".$data->nama_pekerjaan."</tr>
-      <tr><td style='padding : 5px;'><strong>TGL.KAK</strong></td><td style='padding : 5px;'>".$data->tgl_kak."</strong></td></tr>
-      <tr><td style='padding : 5px;'><strong>ESTIMASI</strong></td><td style='padding : 5px;'>".$d." Hari Lagi</td></tr>      
-      </table>         
-      </div>
-        
-        <div class='footer' style='background: black; padding: 30px; color: grey; line-height: 18px; font-size: 12px; text-align: center;'>Graha Sucofindo, 12th Floor, JL Raya Pasar Minggu, Kavling 34, RT.3/RW.4, Pancoran, Kec. Pancoran, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12780</div>
-        
-      </div>
+               <div class='main' style='background: #fafafa; max-width: 500px; border-top: solid 3px #f55422; box-shadow: 0 0 25px rgba(0,0,0,0.05); margin:auto;''>
+                  
+                  <div class='header' style='padding: 30px; background: #f2f2f2;'> 
+          <img src='https://sprint.co.id/wp-content/uploads/2018/09/Sprint-Consultant-Member-of-Sucofindo.png' style='display: block; margin: auto; height : 50px; width : auto;'>
+                  </div>
+                  
+                  <div class='content' style='padding: 30px; padding-bottom: 40px;'>
+                  <h4> Hi ".$data->cp_internal.", </h4>
+                  <h3> harap lakukan update data tender :</h3>
+                  
+          <table >
+                <tr><td style='padding : 5px;'><strong>NAMA KLIEN</strong></td> <td style='padding : 5px;'>".$data->nama_klien."</td></tr>
+                <tr><td style='padding : 5px;'><strong>KELOMPOK JASA</strong></td><td style='padding : 5px;'>".$data->kelompok_jasa."</td></tr>
+                <tr><td style='padding : 5px;'><strong>GRUP JASA</strong></td><td style='padding : 5px;'>".$data->sub_jasa."</td></tr>
+                <tr><td style='padding : 5px;'><strong>NAMA PEKERJAAN</strong></td> <td style='padding : 5px;'>".$data->nama_pekerjaan."</tr>
+                <tr><td style='padding : 5px;'><strong>TGL.KAK</strong></td><td style='padding : 5px;'>".$data->tgl_kak."</strong></td></tr>
+                <tr><td style='padding : 5px;'><strong>ESTIMASI</strong></td><td style='padding : 5px;'>".$d." Hari Lagi</td></tr>      
+                </table>         
+                </div>
+                  
+                  <div class='footer' style='background: black; padding: 30px; color: grey; line-height: 18px; font-size: 12px; text-align: center;'>Graha Sucofindo, 12th Floor, JL Raya Pasar Minggu, Kavling 34, RT.3/RW.4, Pancoran, Kec. Pancoran, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12780</div>
+                  
+                </div>
 
- </body>
+           </body>
 
-</html>";
+          </html>";
 
-$mail = new PHPMailer;
-//Tell PHPMailer to use SMTP
-$mail->isSMTP();
-//Enable SMTP debugging
-// 0 = off (for production use)
-// 1 = client messages
-// 2 = client and server messages
-$mail->SMTPDebug = 2;
-//Ask for HTML-friendly debug output
-$mail->Debugoutput = 'html';
-//Set the hostname of the mail server
-$mail->Host = 'smtp.gmail.com';
-// use
-// $mail->Host = gethostbyname('smtp.gmail.com');
-// if your network does not support SMTP over IPv6
-//Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
-$mail->Port = 587;
-//Set the encryption system to use - ssl (deprecated) or tls
-$mail->SMTPSecure = 'tls';
-//Whether to use SMTP authentication
-$mail->SMTPAuth = true;
-$mail->SMTPAutoTLS = true;
+      $mail = new PHPMailer;
+      //Tell PHPMailer to use SMTP
+      $mail->isSMTP();
+      //Enable SMTP debugging
+      // 0 = off (for production use)
+      // 1 = client messages
+      // 2 = client and server messages
+      $mail->SMTPDebug = 2;
+      //Ask for HTML-friendly debug output
+      $mail->Debugoutput = 'html';
+      //Set the hostname of the mail server
+      $mail->Host = 'smtp.gmail.com';
+      // use
+      // $mail->Host = gethostbyname('smtp.gmail.com');
+      // if your network does not support SMTP over IPv6
+      //Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
+      $mail->Port = 587;
+      //Set the encryption system to use - ssl (deprecated) or tls
+      $mail->SMTPSecure = 'tls';
+      //Whether to use SMTP authentication
+      $mail->SMTPAuth = true;
+      $mail->SMTPAutoTLS = true;
 
-$mail->SMTPOptions = array(
-        'ssl' => array(
-        'verify_peer' => false,
-        'verify_peer_name' => false,
-        'allow_self_signed' => false
-      )
-   );
+      $mail->SMTPOptions = array(
+              'ssl' => array(
+              'verify_peer' => false,
+              'verify_peer_name' => false,
+              'allow_self_signed' => false
+            )
+         );
 
-$mail->Username = 'sprint.idapps@gmail.com';
+      $mail->Username = 'sprint.idapps@gmail.com';
 
-$mail->Password = 'sprint==19';
+      $mail->Password = 'sprint==19';
 
-$mail->setFrom('sprint.idapps@gmail.com', 'Sprint Server');
+      $mail->setFrom('sprint.idapps@gmail.com', 'Sprint Server');
 
-$mail->addReplyTo('sprint.idapps@gmail.com', 'Sprint Server');
+      $mail->addReplyTo('sprint.idapps@gmail.com', 'Sprint Server');
 
-$to = $data->cp_internal_email;
+      $to = $data->cp_internal_email;
 
-$mail->AddAddress($to);
+      $mail->AddAddress($to);
 
-$mail->Subject = '[Reminder] Penjualan (Tender)';
+      $mail->Subject = '[Reminder] Penjualan (Tender)';
 
-$mail->MsgHTML($body);
+      $mail->MsgHTML($body);
 
-$mail->IsHTML(true); // send as HTML
+      $mail->IsHTML(true); // send as HTML
 
-$mail->Send();
+      $mail->Send();
 
-}
+      }
 
-echo 'Message Has Success.';
-} catch (phpmailerException $e) {
-echo $e->errorMessage();
+      echo 'Message Has Success.';
+      } catch (phpmailerException $e) {
+      echo $e->errorMessage();
 
-}
+    }
 
-}else{
+    }else{
 
-echo "tidak ada warning"; 
-echo "'.$d.'";
-}
-}
-}
+    echo "tidak ada warning"; 
+    echo "'.$d.'";
+    }
+    }
+    }
 
 function mail_non_tender(Request $request){
 
-$today = date("Y-m-d");
-    $query = Klien::join('mkt_pem_non_tender', 'mkt_klien.kd_klien', '=', 'mkt_pem_non_tender.kd_klien')
-    ->select('mkt_klien.*', 'mkt_pem_non_tender.*')->get();
+    $today = date("Y-m-d");
+        $query = Klien::join('mkt_pem_non_tender', 'mkt_klien.kd_klien', '=', 'mkt_pem_non_tender.kd_klien')
+        ->select('mkt_klien.*', 'mkt_pem_non_tender.*')->get();
 
-foreach($query as $data){
+    foreach($query as $data){
 
-if ((empty($data->tgl_followup)) or ($today > $data->tgl_followup)) {
+    if ((empty($data->tgl_followup)) or ($today > $data->tgl_followup)) {
 
-try {
-$mail = new PHPMailer(true);
-{
-$body ="
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Notif followup (Non Tender): </title>
-</head>
-<body>
+    try {
+    $mail = new PHPMailer(true);
+    {
+    $body ="
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Notif followup (Non Tender): </title>
+    </head>
+    <body>
 
-     <div class='main' style='background: #fafafa; max-width: 500px; border-top: solid 3px #f55422; box-shadow: 0 0 25px rgba(0,0,0,0.05); margin:auto;''>
-        
-        <div class='header' style='padding: 30px; background: #f2f2f2;'> 
-<img src='https://sprint.co.id/wp-content/uploads/2018/09/Sprint-Consultant-Member-of-Sucofindo.png' style='display: block; margin: auto; height : 50px; width : auto;'>
-        </div>
-        
-<div class='content' style='padding: 30px; padding-bottom: 40px;'>
-<h4> Hi Tim Marketing, </h4>
-<h3> Harap lakukan followup penjualan (Non Tender) :</h3>
-<table>
-    <tr><td style='color : #696969;'><strong>NAMA KLIEN</td><td>".$data->nama_klien."</strong></td></tr>
-    <tr><td style='color : #696969;'><strong>KELOMPOK JASA</strong></td><td>".$data->kelompok_jasa."</td></tr>
-    <tr><td style='color : #696969;'><strong>GRUP JASA</strong></td><td>".$data->sub_jasa."</td></tr>
-    <tr><td style='color : #696969;'><strong>NAMA PEKERJAAN</strong></td><td>".$data->nama_pekerjaan."</td></tr>
-    <tr><td style='color : #696969;'><strong>TANGGAL PROPOSAL</strong></td><td>".$data->tgl_proposal."</td></tr>
-    <tr><td style='color : #696969;'><strong>TANGGAL FOLLOWUP</strong></td><td>".$data->tgl_followup."</td></tr>
-</table>        
-      </div>      
-        <div class='footer' style='background: black; padding: 30px; color: grey; line-height: 18px; font-size: 12px; text-align: center;'>Graha Sucofindo, 12th Floor, JL Raya Pasar Minggu, Kavling 34, RT.3/RW.4, Pancoran, Kec. Pancoran, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12780</div>
-        
-      </div>
+         <div class='main' style='background: #fafafa; max-width: 500px; border-top: solid 3px #f55422; box-shadow: 0 0 25px rgba(0,0,0,0.05); margin:auto;''>
+            
+            <div class='header' style='padding: 30px; background: #f2f2f2;'> 
+    <img src='https://sprint.co.id/wp-content/uploads/2018/09/Sprint-Consultant-Member-of-Sucofindo.png' style='display: block; margin: auto; height : 50px; width : auto;'>
+            </div>
+            
+    <div class='content' style='padding: 30px; padding-bottom: 40px;'>
+    <h4> Hi Tim Marketing, </h4>
+    <h3> Harap lakukan followup penjualan (Non Tender) :</h3>
+    <table>
+        <tr><td style='color : #696969;'><strong>NAMA KLIEN</td><td>".$data->nama_klien."</strong></td></tr>
+        <tr><td style='color : #696969;'><strong>KELOMPOK JASA</strong></td><td>".$data->kelompok_jasa."</td></tr>
+        <tr><td style='color : #696969;'><strong>GRUP JASA</strong></td><td>".$data->sub_jasa."</td></tr>
+        <tr><td style='color : #696969;'><strong>NAMA PEKERJAAN</strong></td><td>".$data->nama_pekerjaan."</td></tr>
+        <tr><td style='color : #696969;'><strong>TANGGAL PROPOSAL</strong></td><td>".$data->tgl_proposal."</td></tr>
+        <tr><td style='color : #696969;'><strong>TANGGAL FOLLOWUP</strong></td><td>".$data->tgl_followup."</td></tr>
+    </table>        
+          </div>      
+            <div class='footer' style='background: black; padding: 30px; color: grey; line-height: 18px; font-size: 12px; text-align: center;'>Graha Sucofindo, 12th Floor, JL Raya Pasar Minggu, Kavling 34, RT.3/RW.4, Pancoran, Kec. Pancoran, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12780</div>
+            
+          </div>
 
- </body>
+     </body>
 
-</html>";
+    </html>";
 
-$mail = new PHPMailer;
-//Tell PHPMailer to use SMTP
-$mail->isSMTP();
-//Enable SMTP debugging
-// 0 = off (for production use)
-// 1 = client messages
-// 2 = client and server messages
-$mail->SMTPDebug = 2;
-//Ask for HTML-friendly debug output
-$mail->Debugoutput = 'html';
-//Set the hostname of the mail server
-$mail->Host = 'smtp.gmail.com';
-// use
-// $mail->Host = gethostbyname('smtp.gmail.com');
-// if your network does not support SMTP over IPv6
-//Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
-$mail->Port = 587;
-//Set the encryption system to use - ssl (deprecated) or tls
-$mail->SMTPSecure = 'tls';
-//Whether to use SMTP authentication
-$mail->SMTPAuth = true;
-$mail->SMTPAutoTLS = true;
+    $mail = new PHPMailer;
+    //Tell PHPMailer to use SMTP
+    $mail->isSMTP();
+    //Enable SMTP debugging
+    // 0 = off (for production use)
+    // 1 = client messages
+    // 2 = client and server messages
+    $mail->SMTPDebug = 2;
+    //Ask for HTML-friendly debug output
+    $mail->Debugoutput = 'html';
+    //Set the hostname of the mail server
+    $mail->Host = 'smtp.gmail.com';
+    // use
+    // $mail->Host = gethostbyname('smtp.gmail.com');
+    // if your network does not support SMTP over IPv6
+    //Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
+    $mail->Port = 587;
+    //Set the encryption system to use - ssl (deprecated) or tls
+    $mail->SMTPSecure = 'tls';
+    //Whether to use SMTP authentication
+    $mail->SMTPAuth = true;
+    $mail->SMTPAutoTLS = true;
 
-$mail->SMTPOptions = array(
-        'ssl' => array(
-        'verify_peer' => false,
-        'verify_peer_name' => false,
-        'allow_self_signed' => false
-      )
-   );
+    $mail->SMTPOptions = array(
+            'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => false
+          )
+       );
 
-$mail->Username = 'sprint.idapps@gmail.com';
+    $mail->Username = 'sprint.idapps@gmail.com';
 
-$mail->Password = 'sprint==19';
+    $mail->Password = 'sprint==19';
 
-$mail->setFrom('sprint.idapps@gmail.com', 'Sprint Server');
+    $mail->setFrom('sprint.idapps@gmail.com', 'Sprint Server');
 
-$mail->addReplyTo('sprint.idapps@gmail.com', 'Sprint Server');
+    $mail->addReplyTo('sprint.idapps@gmail.com', 'Sprint Server');
 
-$to = $data->cp_internal_email;
+    $to = $data->cp_internal_email;
 
-$mail->AddAddress($to);
+    $mail->AddAddress($to);
 
-$mail->Subject = '[Reminder] Penjualan Non-Tender';
+    $mail->Subject = '[Reminder] Penjualan Non-Tender';
 
-$mail->MsgHTML($body);
+    $mail->MsgHTML($body);
 
-$mail->IsHTML(true); // send as HTML
+    $mail->IsHTML(true); // send as HTML
 
-$mail->Send();
+    $mail->Send();
 
-}
+    }
+  
+    echo 'Message Has Success.';
+    } catch (phpmailerException $e) {
+    echo $e->errorMessage();
 
-echo 'Message Has Success.';
-} catch (phpmailerException $e) {
-echo $e->errorMessage();
+    }
 
-}
+    }else{
 
-}else{
-
-echo "tidak ada warning"; 
-}
-}
-}
+    echo "tidak ada warning"; 
+    }
+    }
+  }
 
 function mail_pengalaman(Request $request){
 

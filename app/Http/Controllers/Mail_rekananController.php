@@ -13,8 +13,8 @@ class Mail_rekananController extends Controller
 {	
     function index(Request $request)
     {       
-    $datas = MailRekanan::orderBy('primary_mail', 'asc')->paginate(10);
-    return view('reminder/rekanan/index',compact('datas'));
+        $datas = MailRekanan::orderBy('primary_mail', 'asc')->paginate(10);
+        return view('reminder/rekanan/index',compact('datas'));
     }
 
     function update(Request $request, $id)
@@ -23,13 +23,13 @@ class Mail_rekananController extends Controller
             'primary_mail' => 'required',
         ]);
 
-    $mail = MailRekanan::find($id);
-    $mail->primary_mail = $request->get('primary_mail');
-    $mail->secondary_mail = $request->get('secondary_mail');
-    $mail->save();
-    
-    \Session::flash('success','Data Berhasil Di Ubah');
-    return redirect('mail');   
+        $mail = MailRekanan::find($id);
+        $mail->primary_mail = $request->get('primary_mail');
+        $mail->secondary_mail = $request->get('secondary_mail');
+        $mail->save();
+        
+        \Session::flash('success','Data Berhasil Di Ubah');
+        return redirect('mail');   
     }
 
         function store(Request $request)
@@ -37,15 +37,15 @@ class Mail_rekananController extends Controller
     {
          $validatedData = $request->validate([
         'primary_mail' => 'required|max:255',
-    ]);
+        ]);
 
-    $mail = new MailRekanan();
-    $mail->primary_mail = $request->get('primary_mail');
-    $mail->secondary_mail = $request->get('secondary_mail');
-    $mail->save();
+        $mail = new MailRekanan();
+        $mail->primary_mail = $request->get('primary_mail');
+        $mail->secondary_mail = $request->get('secondary_mail');
+        $mail->save();
 
-    \Session::flash('success','Data Berhasil Di Tambahkan');
-    return redirect('mail');
+        \Session::flash('success','Data Berhasil Di Tambahkan');
+        return redirect('mail');
     
     }
 
